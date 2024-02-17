@@ -12,6 +12,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { WhoComponent } from './components/who/who.component';
 import { CaresComponent } from './components/cares/cares.component';
 import { CardComponent } from './components/card/card.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CardComponent } from './components/card/card.component';
     WelcomeComponent,
     WhoComponent,
     CaresComponent,
-    CardComponent
+    CardComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

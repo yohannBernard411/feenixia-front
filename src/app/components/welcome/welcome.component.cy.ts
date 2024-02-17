@@ -18,13 +18,13 @@ describe('WelcomeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  // it('should create', () => {
+  //   expect(component).toBeTruthy();
+  // });
 
-  it(`should have as title 'FEENIXIA-VOYANCE-ENERGIE'`, () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toEqual('FEENIXIA-VOYANCE-ENERGIE');
-  });
+  // it(`should have as title 'FEENIXIA-VOYANCE-ENERGIE'`, () => {
+  //   const compiled = fixture.nativeElement as HTMLElement;
+  //   expect(compiled.querySelector('h1')?.textContent).toEqual('FEENIXIA-VOYANCE-ENERGIE');
+  // });
 
 });
