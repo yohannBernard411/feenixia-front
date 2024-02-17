@@ -1,0 +1,45 @@
+@import "../../../styles.scss";
+
+.content{
+    width: 100vw;
+    height: calc(100vh - 10vh - 4em);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
+.description{
+    width: 60vw;
+    height: 70vh;
+    text-align: justify;   
+    overflow-y: scroll; 
+    scroll-padding: 30px;
+    // background-color: red;
+    font-size: 24px;
+    overflow-x: hidden;
+}
+.inner-text{
+    width: 49vw;
+    margin: 0 50px 0 50px;
+    background-image: url("https://i.ibb.co/Hn5BpB8/papier.webp");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    // background-color: blue;
+}
+.margin-text{
+    padding: 20px;
+    // background-color: purple;
+}
+.identite{
+    width: 30vw;
+    height: 60vh;
+    // background-color: purple;
+}
+#dessin{
+    width: 30vw;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+}

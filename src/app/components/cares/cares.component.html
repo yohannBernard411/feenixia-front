@@ -1,0 +1,9 @@
+<div class="fullpage">
+    <app-header></app-header>
+    <h2 class="subtitle title-font">Préstations</h2>
+    <div class="all-cards">
+      <div  *ngFor="let care of allCares">
+        <app-card [title]="care.title" [content]="care.content.substring(0, 300)+'...'" [img]="care.img" [cta]="care.cta"></app-card>
+      </div>
+    </div>
+</div>
