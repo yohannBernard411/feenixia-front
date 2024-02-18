@@ -12,7 +12,7 @@ test:
 
 build:
     script:
-        - ng build --configuration production
+        - npm run build
 
 deploy:
   stage: deploy
