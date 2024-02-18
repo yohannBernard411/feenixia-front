@@ -6,15 +6,23 @@
     background-color: $lightmain;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     position: absolute;
     bottom: 0;
 }
 .social-link{
+    width: 15vw;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-around;
     align-items: center;
+}
+.legal-notice{
+    width: 70vw;
+    text-decoration: none;
+}
+.copyright{
+    width: 15vw;
 }
