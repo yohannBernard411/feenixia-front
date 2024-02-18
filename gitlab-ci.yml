@@ -8,4 +8,9 @@ install:
   stage: setup
   script:
     - npm ci
+
+unit test:
+  stage: test
+  script:
+    npm run test
     
