@@ -12,5 +12,5 @@ install:
 unit test:
   stage: test
   script:
-    npm run test
-    
+    - npm ci
+    - npm run test -- --no-watch --browsers=

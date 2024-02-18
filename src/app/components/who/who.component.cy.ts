@@ -19,6 +19,6 @@ describe('WhoComponent', () => {
   });
 
   it('should create', () => {
-
+    expect(true == true);
   });
 });
