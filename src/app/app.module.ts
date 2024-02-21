@@ -13,6 +13,7 @@ import { WhoComponent } from './components/who/who.component';
 import { CaresComponent } from './components/cares/cares.component';
 import { CardComponent } from './components/card/card.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { OpinionsComponent } from './components/opinions/opinions.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { FooterComponent } from './components/footer/footer.component';
     WhoComponent,
     CaresComponent,
     CardComponent,
-    FooterComponent
+    FooterComponent,
+    OpinionsComponent,
+   
   ],
   imports: [
     BrowserModule,

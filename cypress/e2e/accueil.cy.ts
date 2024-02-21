@@ -24,7 +24,7 @@ describe('Test de la page d\'accueil', () => {
 
   it('cliquer sur le lien (temoignages)', () => {
     cy.get(".menu-link").eq(3).click()
-    cy.url().should('include', '/testimonials')
+    cy.url().should('include', '/opinions')
   })
 
   it('cliquer sur le lien (contact)', () => {

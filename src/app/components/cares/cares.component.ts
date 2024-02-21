@@ -7,10 +7,11 @@ import { CaresService } from 'src/app/services/cares.service';
   templateUrl: './cares.component.html',
   styleUrls: ['./cares.component.scss']
 })
+
 export class CaresComponent {
 
   constructor(private caresService: CaresService) { }
 
-  allCares = this.caresService.getAllCares();
+        allCares = this.caresService.getAllCares();
 
 }
