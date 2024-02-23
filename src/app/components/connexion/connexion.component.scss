@@ -1,0 +1,32 @@
+@import '../../../styles.scss';
+
+.connexion-form{
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
+h4{
+    text-align: center;
+}
+.new{
+    width: 40vw;
+    height: 70vh;
+    background-color: purple;
+}
+.old{
+    width: 40vw;
+    height: 70vh;
+    background-color: red;
+}
+.formulaire{
+    width: 40vw;
+    height: 50vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+}

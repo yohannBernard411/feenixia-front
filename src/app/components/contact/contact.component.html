@@ -3,25 +3,42 @@
     <h2 class="subtitle title-font">Contact</h2>
     <div class="send-email">
         <div class="book">
-            <img src="https://i.ibb.co/zmrvmmW/spiritIN.webp"
-                srcset="https://i.ibb.co/SQNYd2R/spiritFP.webp 2400w,
-                        https://i.ibb.co/zmrvmmW/spiritIN.webp 1200w,
-                        https://i.ibb.co/NrXTZM7/spiritSM.webp 600w"
+            <img src=" https://i.ibb.co/brt8Hxd/livreIN.webp"
+                srcset="https://i.ibb.co/dLb8CLZ/livreFP.webp 2400w,
+                        https://i.ibb.co/brt8Hxd/livreIN.webp 1200w,
+                        https://i.ibb.co/NSCfqJR/livreSM.webp 600w"
                 sizes="40vw"
                 alt="Vieux grimoire"
                 id="book">
         </div>
         <div class="contact-form">
-            <h4>FEENIXIA-VOYANCE-ENERGIE</h4>
-            <p>mailing@feenixia.fr</p>
-            <form class="formulaire">
-                <label>Votre nom: </label>
-                <input>
-                <label>Votre email: </label>
-                <input>
-                <label>Votre message: </label>
-                <input>
-            </form>
+            <div>
+                <h4>FEENIXIA-VOYANCE-ENERGIE</h4>
+                <p class="mailing">mailing@feenixia.fr</p>
+            </div>
+            <form [formGroup]="form" (ngSubmit)="onSubmit($event)" class="formulaire text-font">
+                <label>
+                  Votre nom:<br>
+                  <input type="string" formControlName="name" class="name-email">
+                </label>
+                <br>
+                <label>
+                    Votre email:<br>
+                    <input type="email" formControlName="email" class="name-email">
+                  </label>
+                  <br>
+                <label>
+                  Votre message:<br>
+                  <!-- <input type="string" formControlName="message" class="message"> -->
+                  <textarea type="string" formControlName="message" class="message" rows="5" cols="33">
+                    Votre texte ici...
+                  </textarea>
+                </label>
+                <br>
+                <button type="submit" class="cta">Envoyer</button>
+              </form>
         </div>
     </div>
 </div>
+
+<ng-toast></ng-toast>

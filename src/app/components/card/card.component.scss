@@ -37,7 +37,8 @@
   text-align: justify;
 }
 .cta-card{
-  background-color: grey;
+  background-color: $contrast;
+  color: $darkmain;
   border-radius: 5px;
   padding: 10px;
   text-decoration: none;

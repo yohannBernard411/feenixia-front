@@ -16,7 +16,7 @@ export class OpinionsComponent {
       care: "Le bien être",
       user: {
         id: 34,
-        img: "https://media.istockphoto.com/id/1319667386/fr/photo/chiot-nouveau-n%C3%A9-minuscule-et-charmant-de-la-race-am%C3%A9ricaine-de-chien-dintimidateur.jpg?s=612x612&w=0&k=20&c=bHdZQI1LH3RgEj_SqsBIuGrD3naU2dosIqU8mJHnZYw=",
+        img: "https://img.nrj.fr/OLo1RjQy0nfOEDF6Yv62g1qimp0=/fit-in/230x346/smart/http%3A%2F%2Fmedia.nrj.fr%2F217x326%2F2013%2F05%2Fbig-bang-theory-howard-wolowitz_772.jpg",
         name: "Florian"
       },
       content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis euismod metus quis sapien accumsan, a blandit ex convallis. Ut id libero fringilla, varius ligula sit amet, rhoncus nulla. Mauris tempor gravida ornare. Nullam feugiat, nibh a euismod lacinia, neque turpis ornare purus, eu sagittis libero nulla at felis. Etiam eget neque et metus euismod porta. Sed mattis dictum placerat. Maecenas pellentesque sapien ac velit rutrum convallis. Donec nibh mi, accumsan sed rhoncus sit amet, dapibus vel eros. Proin velit ex, ornare vitae tincidunt a, placerat in ante. Nulla non lacus eget leo auctor convallis at eget augue. Integer egestas magna velit, ac varius massa mattis ut. Nam vehicula arcu ac risus tincidunt, sit amet fringilla ligula sagittis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis euismod metus quis sapien accumsan, a blandit ex convallis. Ut id libero fringilla, varius ligula sit amet, rhoncus nulla. Mauris tempor gravida ornare. Nullam feugiat, nibh a euismod lacinia, neque turpis ornare purus, eu sagittis libero nulla at felis. Etiam eget neque et metus euismod porta. Sed mattis dictum placerat. Maecenas pellentesque sapien ac velit rutrum convallis. Donec nibh mi, accumsan sed rhoncus sit amet, dapibus vel eros. Proin velit ex, ornare vitae tincidunt a, placerat in ante. Nulla non lacus eget leo auctor convallis at eget augue. Integer egestas magna velit, ac varius massa mattis ut. Nam vehicula arcu ac risus tincidunt, sit amet fringilla ligula sagittis.", 
@@ -28,7 +28,7 @@ export class OpinionsComponent {
       care: "Le magnetisme",
       user: {
         id: 76,
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfo8ifEhDcDKcVlik5qMdjCW--WApqNbneiesoi-ewMQ&s",
+        img: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Kaley_Cuoco_at_PaleyFest_2013.jpg/800px-Kaley_Cuoco_at_PaleyFest_2013.jpg",
         name: "Yohann"
       },
       content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis euismod metus quis sapien accumsan, a blandit ex convallis. Ut id libero fringilla, varius ligula sit amet, rhoncus nulla. Mauris tempor gravida ornare. Nullam feugiat, nibh a euismod lacinia, neque turpis ornare purus, eu sagittis libero nulla at felis. Etiam eget neque et metus euismod porta. Sed mattis dictum placerat. Maecenas pellentesque sapien ac velit rutrum convallis. Donec nibh mi, accumsan sed rhoncus sit amet, dapibus vel eros. Proin velit ex, ornare vitae tincidunt a, placerat in ante. Nulla non lacus eget leo auctor convallis at eget augue. Integer egestas magna velit, ac varius massa mattis ut. Nam vehicula arcu ac risus tincidunt, sit amet fringilla ligula sagittis.", 
@@ -40,7 +40,7 @@ export class OpinionsComponent {
       care: "Le néttoyage energetique",
       user: {
         id: 78,
-        img: "https://i.pinimg.com/originals/1e/fe/82/1efe82bf4b5d665eeb9fd60b649a1a40.jpg",
+        img: "https://cafe-powell.com/wp-content/uploads/2014/07/sheldon-cooper.jpg",
         name: "Lorrie"
       },
       content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis euismod metus quis sapien accumsan, a blandit ex convallis. Ut id libero fringilla, varius ligula sit amet, rhoncus nulla. Mauris tempor gravida ornare. Nullam feugiat, nibh a euismod lacinia, neque turpis ornare purus, eu sagittis libero nulla at felis. Etiam eget neque et metus euismod porta. Sed mattis dictum placerat. Maecenas pellentesque sapien ac velit rutrum convallis. Donec nibh mi, accumsan sed rhoncus sit amet, dapibus vel eros. Proin velit ex, ornare vitae tincidunt a, placerat in ante. Nulla non lacus eget leo auctor convallis at eget augue. Integer egestas magna velit, ac varius massa mattis ut. Nam vehicula arcu ac risus tincidunt, sit amet fringilla ligula sagittis.", 
@@ -52,7 +52,7 @@ export class OpinionsComponent {
       care: "Les guidances",
       user: {
         id: 23,
-        img: "https://jardinage.lemonde.fr/images/dossiers/2017-11/chihuahua-113418.jpg",
+        img: "https://figurinepop.com/public/bernadette1_1.jpg",
         name: "Leila"
       },
       content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis euismod metus quis sapien accumsan, a blandit ex convallis. Ut id libero fringilla, varius ligula sit amet, rhoncus nulla. Mauris tempor gravida ornare. Nullam feugiat, nibh a euismod lacinia, neque turpis ornare purus, eu sagittis libero nulla at felis. Etiam eget neque et metus euismod porta. Sed mattis dictum placerat. Maecenas pellentesque sapien ac velit rutrum convallis. Donec nibh mi, accumsan sed rhoncus sit amet, dapibus vel eros. Proin velit ex, ornare vitae tincidunt a, placerat in ante. Nulla non lacus eget leo auctor convallis at eget augue. Integer egestas magna velit, ac varius massa mattis ut. Nam vehicula arcu ac risus tincidunt, sit amet fringilla ligula sagittis.", 

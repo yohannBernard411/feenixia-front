@@ -4,5 +4,6 @@
   "compilerOptions": {
     "sourceMap": false,
     "types": ["cypress"]
-  }
+  },
+  "baseUrl": "http://localhost:4200"
 }

@@ -1,0 +1,43 @@
+<div class="fullpage">
+    <app-header></app-header>
+    <h2 class="subtitle title-font">Connexion</h2>
+    <div class="connexion-form">
+        <div class="new">
+          <h4>Nouveau sur FEENIXIA</h4>
+            <form [formGroup]="formNew" (ngSubmit)="onSubmitNew($event)" class="formulaire text-font">
+                <label>
+                  Votre nom:<br>
+                  <input type="string" formControlName="name" class="name-email-mdp">
+                </label>
+                <br>
+                <label>
+                    Votre email:<br>
+                    <input type="email" formControlName="email" class="name-email-mdp">
+                  </label>
+                  <br>
+                <label>
+                  Votre mot de passe:<br>
+                  <input type="password" formControlName="mdp" class="name-email-mdp">
+                </label>
+                <br>
+                <button type="submit" class="cta">Envoyer</button>
+              </form>
+        </div>
+        <div class="old">
+          <h4>Déja membre</h4>
+            <form [formGroup]="formOld" (ngSubmit)="onSubmitOld($event)" class="formulaire text-font">
+                <label>
+                    Votre email:<br>
+                    <input type="email" formControlName="email" class="name-email">
+                </label>
+                  <br>
+                <label>
+                    Votre mot de passe:<br>
+                    <input type="password" formControlName="mdp" class="name-email-mdp">
+                </label>
+                <br>
+                <button type="submit" class="cta">Envoyer</button>
+              </form>
+        </div>
+    </div>
+</div>

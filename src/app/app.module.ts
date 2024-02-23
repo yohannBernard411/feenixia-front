@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgToastModule } from 'ng-angular-popup';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
@@ -16,6 +18,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { OpinionsComponent } from './components/opinions/opinions.component';
 import { HeadbandComponent } from './components/headband/headband.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { ConnexionComponent } from './components/connexion/connexion.component';
+import { ShoppingComponent } from './components/shopping/shopping.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +34,9 @@ import { ContactComponent } from './components/contact/contact.component';
     OpinionsComponent,
     HeadbandComponent,
     ContactComponent,
+    ConnexionComponent,
+    ShoppingComponent,
+    SearchComponent,
    
   ],
   imports: [
@@ -36,7 +44,10 @@ import { ContactComponent } from './components/contact/contact.component';
     AppRoutingModule,
     MatIconModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgToastModule
   ],
   providers: [],
   bootstrap: [AppComponent]
