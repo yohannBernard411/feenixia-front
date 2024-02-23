@@ -1,6 +1,7 @@
+
 describe('Test de la page d\'accueil', () => {
   beforeEach(() => {
-    cy.visit('/welcome');
+    cy.visit('http://localhost:4200/')
   });
 
   it('verification du titre', () => {
@@ -19,7 +20,7 @@ describe('Test de la page d\'accueil', () => {
 
   it('cliquer sur le lien (prestations)', () => {
     cy.get(".menu-link").eq(2).click()
-    cy.url().should('include', '/services')
+    cy.url().should('include', '/cares')
   })
 
   it('cliquer sur le lien (temoignages)', () => {

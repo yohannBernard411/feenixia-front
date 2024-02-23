@@ -4,27 +4,38 @@ import { WelcomeComponent } from './welcome.component';
 import { HeaderComponent } from '../header/header.component';
 import { MatIconModule } from '@angular/material/icon';
 
-describe('WelcomeComponent', () => {
-  let component: WelcomeComponent;
-  let fixture: ComponentFixture<WelcomeComponent>;
-
+describe('Test de la page d\'accueil', () => {
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [WelcomeComponent, HeaderComponent],
-      imports: [MatIconModule]
-    });
-    fixture = TestBed.createComponent(WelcomeComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    cy.visit('/welcome');
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it('verification du titre', () => {
+    cy.get("h1").contains("FEENIXIA-VOYANCE-ENERGIE")
+  });
 
-  // it(`should have as title 'FEENIXIA-VOYANCE-ENERGIE'`, () => {
-  //   const compiled = fixture.nativeElement as HTMLElement;
-  //   expect(compiled.querySelector('h1')?.textContent).toEqual('FEENIXIA-VOYANCE-ENERGIE');
-  // });
+  it('cliquer sur le lien (accueil)', () => {
+    cy.get(".menu-link").eq(0).click()
+    cy.url().should('include', '/welcome')
+  })
+
+  it('cliquer sur le lien (qui suis je?)', () => {
+    cy.get(".menu-link").eq(1).click()
+    cy.url().should('include', '/who')
+  })
+
+  it('cliquer sur le lien (prestations)', () => {
+    cy.get(".menu-link").eq(2).click()
+    cy.url().should('include', '/services')
+  })
+
+  it('cliquer sur le lien (temoignages)', () => {
+    cy.get(".menu-link").eq(3).click()
+    cy.url().should('include', '/opinions')
+  })
+
+  it('cliquer sur le lien (contact)', () => {
+    cy.get(".menu-link").eq(4).click()
+    cy.url().should('include', '/contact')
+  })
 
 });

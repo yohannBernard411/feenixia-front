@@ -1,0 +1,43 @@
+@import "../../../styles.scss";
+
+.contct{
+    width: 100vw;
+    height: 100vh;
+}
+.send-email{
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
+.book{
+    width: 40vw;
+    height: 60vh;
+}
+#book{
+    width: 40vw;
+    height: 60vh;
+}
+.contact-form{
+    width: 50vw;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.formulaire{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+h4{
+    font-size: 24px;
+}

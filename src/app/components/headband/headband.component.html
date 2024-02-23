@@ -1,0 +1,25 @@
+<div class="headband">
+    <div class="headband-left-side">
+        <div class="headband-pictures">
+            <img class="headband-image" src="{{userimg}}" alt="Photo de {{username}}">
+            <img class="opinion-care" src="{{imgbycare(care)}}">
+        </div>
+        <div class="headband-actions">
+            <button class="like-button" (click)="like()"><mat-icon svgIcon="thumb-up" aria-hidden="false" aria-label="Thumb-up svg icon"></mat-icon></button>
+            <p id="{{id.toString()}}">{{count}}</p>
+            <button class="dislike-button" (click)="dislike()"><mat-icon svgIcon="thumb-down" aria-hidden="false" aria-label="Thumb-down svg icon"></mat-icon></button>
+        </div>
+    </div>
+    <div class="headband-right-side">
+        <div>
+            <h3 class="headband-title">{{title}}</h3>
+        </div>
+        <div class="content">
+            <p>{{content}}</p>
+        </div>
+        <div class="headband-footer">
+            <h4 class="headband-subtitle">{{care}}</h4>
+            <p class="signature"><i>{{username}}</i></p>
+        </div>
+    </div>
+</div>

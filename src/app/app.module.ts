@@ -14,6 +14,8 @@ import { CaresComponent } from './components/cares/cares.component';
 import { CardComponent } from './components/card/card.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { OpinionsComponent } from './components/opinions/opinions.component';
+import { HeadbandComponent } from './components/headband/headband.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { OpinionsComponent } from './components/opinions/opinions.component';
     CardComponent,
     FooterComponent,
     OpinionsComponent,
+    HeadbandComponent,
+    ContactComponent,
    
   ],
   imports: [

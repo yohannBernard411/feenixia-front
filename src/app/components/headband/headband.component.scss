@@ -1,0 +1,79 @@
+@import '../../../styles.scss';
+.headband{
+    width: 80vw;
+    height: 40vh;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    overflow: hidden;
+    border: solid 2px $main;
+    border-radius: 15px;
+    margin: 20px;
+}
+.headband-left-side{
+    width: 30vw;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.headband-pictures{
+    margin-top: 5vh;
+    width: 30vw;
+    height: 25vh;
+}
+.opinion-care{
+    width: 25vw;
+    height: auto;
+    max-height: 20vh;
+    border-radius: 10px;
+}
+.headband-image{
+    width: 4vw;
+    height: 4vw;
+    border-radius: 50%;
+    position: relative;
+    top: -5vw;
+    left: 24vw;
+}
+.headband-actions{
+    width: 30vw;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
+.headband-right-side{
+    width: 50vw;
+    height: 40vh;
+}
+.headband-title{
+    text-align: center;
+    height: 5vh;
+}
+.content{
+    height: 25vh;
+    text-align: justify;
+    overflow-y: auto;
+    padding: 20px;
+}
+.headband-footer{
+    width: 50vw;
+    height: 5vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
+.headband-subtitle{
+
+}
+.signature{
+    text-decoration: underline;
+}
