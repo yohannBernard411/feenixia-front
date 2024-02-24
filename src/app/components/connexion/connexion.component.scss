@@ -8,25 +8,48 @@
     justify-content: space-around;
     align-items: center;
 }
+.cta{
+    background-color: $lightmain;
+    color: $darkmain;
+    border-radius: 5px;
+    padding: 10px;
+    text-decoration: none;
+  }
+.cta-valid{
+    background-color: $contrast;
+    color: $darkmain;
+    border-radius: 5px;
+    padding: 10px;
+    text-decoration: none;
+  }
 h4{
+    font-size: 24px;
     text-align: center;
 }
 .new{
     width: 40vw;
     height: 70vh;
-    background-color: purple;
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 20px;
 }
 .old{
     width: 40vw;
     height: 70vh;
-    background-color: red;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    padding: 20px;
 }
 .formulaire{
     width: 40vw;
     height: 50vh;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
+}
+.name-email-mdp{
+    width: 400px;
+    height: 20px;
+    border-radius: 5px;
 }

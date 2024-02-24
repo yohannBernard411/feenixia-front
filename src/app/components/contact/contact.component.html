@@ -16,18 +16,19 @@
                 <h4>FEENIXIA-VOYANCE-ENERGIE</h4>
                 <p class="mailing">mailing@feenixia.fr</p>
             </div>
-            <form [formGroup]="form" (ngSubmit)="onSubmit($event)" class="formulaire text-font">
-                <label>
+            <form [formGroup]="form" (ngSubmit)="onSubmit($event)" class=" text-font">
+              <div class="formulaire">
+                <label class="name-zone">
                   Votre nom:<br>
                   <input type="string" formControlName="name" class="name-email">
                 </label>
                 <br>
-                <label>
+                <label class="email-zone">
                     Votre email:<br>
                     <input type="email" formControlName="email" class="name-email">
                   </label>
                   <br>
-                <label>
+                <label class="message-zone">
                   Votre message:<br>
                   <!-- <input type="string" formControlName="message" class="message"> -->
                   <textarea type="string" formControlName="message" class="message" rows="5" cols="33">
@@ -35,7 +36,10 @@
                   </textarea>
                 </label>
                 <br>
+              </div>
+              <div>
                 <button type="submit" class="cta">Envoyer</button>
+              </div>
               </form>
         </div>
     </div>

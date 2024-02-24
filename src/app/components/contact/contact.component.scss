@@ -19,11 +19,11 @@
 }
 #book{
     width: 40vw;
-    height: 60vh;
+    height: auto;
 }
 .contact-form{
     width: 50vw;
-    height: 60vh;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -35,13 +35,29 @@
 .mailing{
     text-align: center;
 }
+// form{
+//     display: flex;
+//     flex-direction: column;
+//     flex-wrap: wrap;
+//     justify-content: space-around;
+//     align-items: center;
+// }
 .formulaire{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-around;
-    align-items: flex-start;
+    align-items: flex-end;
     font-size: 24px;
+}
+.name-zone{
+    height: 10vh;
+}
+.email-zone{
+    height: 10vh;
+}
+.message-zone{
+    height: 25vh;
 }
 .name-email{
     width: 400px;
@@ -50,15 +66,21 @@
 }
 .message{
     width: 400px;
-    height: 40px;
+    height: 120px;
     overflow-y: auto;
     border-radius: 5px;
 }
-.cta{
-    background-color: grey;
+  .cta{
+    background-color: $contrast;
+    color: $darkmain;
     border-radius: 5px;
     padding: 10px;
     text-decoration: none;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 40px;
+    margin-right: 60px;
   }
 h4{
     font-size: 24px;

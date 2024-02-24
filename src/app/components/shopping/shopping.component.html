@@ -1,4 +1,35 @@
 <div class="fullpage">
     <app-header></app-header>
     <h2 class="subtitle title-font">Shopping</h2>
+    <table>
+        <caption>
+          Votre panier actuel
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Désignation</th>
+            <th scope="col">Quantité</th>
+            <th scope="col">Prix unitaire</th>
+            <th scope="col">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let article of currentShoppingByUser">
+            <th scope="row"><img src={{article.img}}></th><!-- image-->
+            <td>{{article.name}}</td><!-- designation-->
+            <td>{{article.quantite}}</td><!-- quantité-->
+            <td>{{formatagePrix(article.prix)}}</td><!-- prix unitaire-->
+            <td>{{formatagePrix(article.quantite*article.prix)}}</td><!-- totla-->
+          </tr>
+          
+      </tbody>
+      <tfoot>
+        <tr>
+          <th scope="row" colspan="4">Total: </th>
+          <td>{{formatagePrix(calculateTotal())}}</td>
+        </tr>
+      </tfoot>
+    </table>
+    <button type="submit" class="cta">Passer commande</button>
 </div>
