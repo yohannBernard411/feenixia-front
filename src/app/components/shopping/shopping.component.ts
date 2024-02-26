@@ -20,7 +20,7 @@ export class ShoppingComponent {
       return this.total;
     }
 
-    formatagePrix(prix: number): string {
+    formatagePrix(prix: number): string { //accept 12350 and return 123,50€ 
       const taille = prix.toString().length;
       return prix.toString().substring(0, taille-2)+","+prix.toString().substring(taille-2, taille)+"€";
     }

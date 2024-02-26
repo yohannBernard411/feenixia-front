@@ -23,13 +23,10 @@
 $main: #9c297f;
 $lightmain: #BD71A9;
 $darkmain: #750457;
-
 $secondary: #F6B7F0;
 $lightsecondary: #FEEBFD;
 $darksecondary: #C581C0;
-
 $contrast: #26F090;
-
 $dark: #9C297FFF;
 $alphadark: #9c297fb2;
 $alphalight: #E38CDFb2;
@@ -54,27 +51,26 @@ $light: #E38CDFff;
 }
 
 //Affichage du scroll vertical
-
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
   }
-  /* Track */
-  ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey; 
-    border-radius: 5px;
-  }
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: $darkmain; 
-    border-radius: 5px;
-  }
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: $lightmain; 
-  }
-  
+/* Track */
+::-webkit-scrollbar-track {
+box-shadow: inset 0 0 5px grey; 
+border-radius: 5px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: $darkmain; 
+border-radius: 5px;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: $lightmain; 
+}
 
+//media queries
 @media (max-width: 720px){
     .fullpage{
         background-image: linear-gradient(45deg, $dark, $alphadark, $alphalight, $light), url("https://i.ibb.co/8gnFRqL/cielSM.webp");
@@ -89,4 +85,35 @@ $light: #E38CDFff;
     .fullpage{
         background-image: linear-gradient(45deg, $dark, $alphadark, $alphalight, $light), url("https://i.ibb.co/8gnFRqL/cielFP.webp");
     }
+}
+
+//vignette blanche-transparente
+.white-background{
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+}
+
+// button
+.cta{
+    color: $darkmain;
+    border-radius: 5px;
+    padding: 10px;
+    text-decoration: none;
+}
+.valid-cta{
+    background-color: $contrast;
+}
+.invalid-cta{
+    background-color: $lightmain;
+}
+
+// signature
+.signature{
+    text-decoration: underline;
+    font-style: oblique 23deg;
+    text-align: center;
+    transform-origin: center;
+    transform: rotateZ(-20deg);
+    font-family: "Great Vibes", cursive;
+    font-weight: 400;
 }

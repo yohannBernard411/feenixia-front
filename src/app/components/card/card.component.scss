@@ -11,8 +11,11 @@
     border-radius: 10px;
     background-color: rgb(240, 240, 240);
     padding: 20px;
-    position: relative;
     box-shadow: 10px 10px 10px $alphadark;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: self-start;
 }
 .card:hover{
   transition-property: box-shadow, background-color;
@@ -36,16 +39,3 @@
 .content-card{
   text-align: justify;
 }
-.cta-card{
-  background-color: $contrast;
-  color: $darkmain;
-  border-radius: 5px;
-  padding: 10px;
-  text-decoration: none;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin-bottom: 20px;
-  margin-right: 20px;
-}
-
