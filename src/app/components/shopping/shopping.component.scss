@@ -1,4 +1,5 @@
 @import '../../../styles.scss';
+
 table {
     width: 100vw;
     height: auto;
@@ -33,15 +34,3 @@ th > img{
     width: 12vw;
     height: 10vh;
 }
-.cta{
-    background-color: $contrast;
-    color: $darkmain;
-    border-radius: 5px;
-    padding: 10px;
-    text-decoration: none;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    margin-bottom: 40px;
-    margin-right: 60px;
-  }

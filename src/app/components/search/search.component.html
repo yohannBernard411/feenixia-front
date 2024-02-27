@@ -1,18 +1,24 @@
 <div class="fullpage">
     <app-header></app-header>
     <h2 class="subtitle title-font">Search</h2>
-    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="formulaire text-font">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="formulaire text-font white-background">
         <label>
           Votre recherche:<br>
           <input type="string" formControlName="recherche" class="recherche">
         </label>
         <br>
-        <button type="submit" class="cta">Envoyer</button>
+        <button type="submit" class="cta valid-cta">Envoyer</button>
       </form>
-      <div *ngFor=" let linkFind of this.returnSearch">
-        <h4>{{linkFind.title}}</h4>
-        <img src="{{linkFind.img}}">
-        <p>{{linkFind.type}}</p>
-        <button><a href="{{linkFind.link}}"></a>Aller sur la page</button>
+      <div *ngFor=" let linkFind of this.returnSearch" class="white-background response">
+        <div>
+          <h4 class="response-title">{{linkFind.title}}</h4>
+        </div>
+        <div class="response-elements">
+          <img class="response-img" src="{{linkFind.img}}">
+          <div>
+            <p class="response-type">{{linkFind.type}}</p>
+            <button class="cta valid-cta"><a href="{{linkFind.link}}"></a>Aller sur la page</button>
+          </div>
+      </div>
     </div>
 </div>

@@ -8,8 +8,10 @@ import { ContactComponent } from './components/contact/contact.component';
 import { ConnexionComponent } from './components/connexion/connexion.component';
 import { ShoppingComponent } from './components/shopping/shopping.component';
 import { SearchComponent } from './components/search/search.component';
+import { LegalnoticeComponent } from './components/legalnotice/legalnotice.component';
 
 const routes: Routes = [
+  { path: 'legalnotice', component: LegalnoticeComponent},
   { path: 'search', component: SearchComponent},
   { path: 'shopping', component: ShoppingComponent},
   { path: 'connexion', component: ConnexionComponent},

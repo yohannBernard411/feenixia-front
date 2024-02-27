@@ -1,4 +1,5 @@
 @import '../../../styles.scss';
+
 .headband{
     width: 80vw;
     height: 40vh;
@@ -8,8 +9,6 @@
     align-items: center;
     overflow: hidden;
     border: solid 2px $main;
-    background-color: rgba(255, 255, 255, 0.4);
-    border-radius: 15px;
     margin: 20px;
 }
 .headband-left-side{
@@ -74,7 +73,4 @@
 }
 .headband-subtitle{
 
-}
-.signature{
-    text-decoration: underline;
 }

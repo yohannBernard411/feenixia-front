@@ -21,6 +21,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { ConnexionComponent } from './components/connexion/connexion.component';
 import { ShoppingComponent } from './components/shopping/shopping.component';
 import { SearchComponent } from './components/search/search.component';
+import { LegalnoticeComponent } from './components/legalnotice/legalnotice.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { SearchComponent } from './components/search/search.component';
     ConnexionComponent,
     ShoppingComponent,
     SearchComponent,
+    LegalnoticeComponent,
    
   ],
   imports: [
