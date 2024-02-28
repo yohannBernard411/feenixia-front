@@ -9,8 +9,10 @@ import { ConnexionComponent } from './components/connexion/connexion.component';
 import { ShoppingComponent } from './components/shopping/shopping.component';
 import { SearchComponent } from './components/search/search.component';
 import { LegalnoticeComponent } from './components/legalnotice/legalnotice.component';
+import { InscriptionComponent } from './components/inscription/inscription.component';
 
 const routes: Routes = [
+  { path: 'inscription', component: InscriptionComponent},
   { path: 'legalnotice', component: LegalnoticeComponent},
   { path: 'search', component: SearchComponent},
   { path: 'shopping', component: ShoppingComponent},

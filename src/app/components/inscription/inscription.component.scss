@@ -1,0 +1,33 @@
+@import '../../../styles.scss';
+
+.connexion-form{
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
+h4{
+    font-size: 24px;
+    text-align: center;
+}
+.new{
+    width: 40vw;
+    height: 70vh;
+    padding: 20px;
+}
+.formulaire{
+    width: 40vw;
+    height: 50vh;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+.name-email-mdp{
+    width: 400px;
+    height: 20px;
+    border-radius: 5px;
+}

@@ -2,39 +2,6 @@
     <app-header></app-header>
     <h2 class="subtitle title-font">Connexion</h2>
     <div class="connexion-form">
-        <div class="new white-background">
-          <h4>Nouveau sur FEENIXIA</h4>
-            <form [formGroup]="formNew" (ngSubmit)="onSubmitNew($event)" class="formulaire text-font">
-                <label>
-                  Votre nom:<br>
-                  <input type="string" formControlName="name" class="name-email-mdp">
-                </label>
-                <br>
-                <div *ngIf="formNew.get('name')?.errors && formNew.get('name')!.errors!['required']">Le nom est requis.</div>
-                <div *ngIf="formNew.get('name')?.errors && formNew.get('name')!.errors!['minlength']">Le nom doit contenir au moins 6 caractères.</div>
-                <div *ngIf="formNew.get('name')?.errors && formNew.get('name')!.errors!['maxlength']">Le nom doit contenir au maximum 22 caractères.</div>
-                <label>
-                    Votre email:<br>
-                    <input type="email" formControlName="email" class="name-email-mdp">
-                </label>
-                <br>
-                <div *ngIf="formNew.get('email')?.errors && formNew.get('email')!.errors!['required']">L'email nom est requis.</div>
-                <div *ngIf="formNew.get('email')?.errors && formNew.get('email')!.errors!['minlength']">L'email nom doit contenir au moins 6 caractères.</div>
-                <div *ngIf="formNew.get('email')?.errors && formNew.get('email')!.errors!['maxlength']">L'email doit contenir au maximum 100 caractères.</div>
-                <div *ngIf="formNew.get('email')?.errors && formNew.get('email')!.errors!['email']">L'email doit être de la forme: nom @ site . extension</div>
-                <label>
-                  Votre mot de passe:<br>
-                  <input type="password" formControlName="mdp" class="name-email-mdp">
-                </label>
-                <br>
-                <div *ngIf="formNew.get('mdp')?.errors && formNew.get('mdp')!.errors!['required']">Le mot de passe est requis.</div>
-                <div *ngIf="formNew.get('mdp')?.errors && formNew.get('mdp')!.errors!['minlength']">Le mot de passe doit contenir au moins 6 caractères.</div>
-                <div *ngIf="formNew.get('mdp')?.errors && formNew.get('mdp')!.errors!['maxlength']">Le mot de passe doit contenir au maximum 22 caractères.</div>
-                <div *ngIf="formNew.get('mdp')?.errors && formNew.get('mdp')!.errors!['pattern']">Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un caractère spécial.</div>
-                <button *ngIf="formNew.get('name')?.errors || formNew.get('email')?.errors || formNew.get('mdp')?.errors" class="cta invalid-cta">Envoyer</button>
-                <button *ngIf="!formNew.get('name')?.errors && !formNew.get('email')?.errors && !formNew.get('mdp')?.errors" class="cta valid-cta">Envoyer</button>
-              </form>
-        </div>
         <div class="old white-background">
           <h4>Déja membre</h4>
             <form [formGroup]="formOld" (ngSubmit)="onSubmitOld($event)" class="formulaire text-font">
@@ -56,8 +23,9 @@
                 <div *ngIf="formOld.get('mdp')?.errors && formOld.get('mdp')!.errors!['minlength']">Le mot de passe doit contenir au moins 6 caractères.</div>
                 <div *ngIf="formOld.get('mdp')?.errors && formOld.get('mdp')!.errors!['maxlength']">Le mot de passe doit contenir au maximum 22 caractères.</div>
                 <div *ngIf="formOld.get('mdp')?.errors && formOld.get('mdp')!.errors!['pattern']">Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un caractère spécial.</div>
-                <button *ngIf="formOld.get('email')?.errors || formOld.get('mdp')?.errors" class="cta invalid-cta">Envoyer</button>
-                <button *ngIf="!formOld.get('email')?.errors && !formOld.get('mdp')?.errors" class="cta valid-cta">Envoyer</button>
+                <a href="/inscription">Pas encore inscrit</a>
+                <button *ngIf="formOld.get('email')?.errors || formOld.get('mdp')?.errors" class="cta invalid-cta" type="submit">Envoyer</button>
+                <button *ngIf="!formOld.get('email')?.errors && !formOld.get('mdp')?.errors" class="cta valid-cta" type="submit">Envoyer</button>
               </form>
         </div>
     </div>
