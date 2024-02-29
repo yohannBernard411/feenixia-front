@@ -8,12 +8,17 @@ import { NgToastService } from 'ng-angular-popup';
   templateUrl: './inscription.component.html',
   styleUrls: ['./inscription.component.scss']
 })
-export class InscriptionComponent{
+export class InscriptionComponent {
 
   constructor(private toast: NgToastService, private router: Router){}
 
+  username: string = '';
+  useremail: string = '';
+  nameUnknown: unknown;
+  emailUnknown: unknown;
+
   showSuccessNew(name: string, email: string) {
-    this.toast.success({detail:"SUCCESS",summary:'Félicitation '+name+', pour votre inscription, un message de validation vous a été envoyé à l\'adresse: '+email ,duration:10000});
+    this.toast.success({detail:"SUCCESS",summary:'Bonjour '+name+', nous vous avons envoyer un mail de validation à l\'adresse:'+email ,duration:5000});
   }
   
   showErrorNew(name: string, error: string) {
@@ -21,18 +26,20 @@ export class InscriptionComponent{
   }
 
   formNew: FormGroup = new FormGroup({
-    name: new FormControl('', [Validators.minLength(6), Validators.maxLength(22), Validators.required] ),
+    name: new FormControl('', [Validators.minLength(6), Validators.maxLength(22), Validators.required]),
     email: new FormControl('', [Validators.minLength(6), Validators.maxLength(100), Validators.required, Validators.email]),
     mdp: new FormControl('', [Validators.minLength(6), Validators.maxLength(22), Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')])
   });
 
-
   onSubmitNew(e: Event) {
-    const formData = this.formNew.value;
+    const formData2 = this.formNew.value;
     this.formNew.get('name')!.setValidators([Validators.minLength(6), Validators.maxLength(22), Validators.required]);
     this.formNew.get('email')!.setValidators([Validators.minLength(6), Validators.maxLength(100), Validators.required, Validators.email]);
     this.formNew.get('mdp')!.setValidators([Validators.minLength(6), Validators.maxLength(22), Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]);
-    this.showSuccessNew(this.formNew.get('name')!.value, this.formNew.get('email')!.value);
+    this.showSuccessNew(this.formNew.get('name')?.value, this.formNew.get('email')?.value);
+    setTimeout(() => {
+      this.router.navigate(['/welcome']);
+   }, 5000);
     //   e.preventDefault();
   //   emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', e.target as HTMLFormElement, 'YOUR_PUBLIC_KEY')
   //     .then((result: EmailJSResponseStatus) => {
@@ -40,9 +47,6 @@ export class InscriptionComponent{
   //     }, (error) => {
   //       this.showError(this.form.get('name')!.value, error.text)
   //     });
-    console.log("Ceci est un nouvel utilisateur: ");
-    console.log("name: "+this.formNew.get('name')!.value+", email: "+this.formNew.get('email')!.value+", name: "+this.formNew.get('mdp')!.value);
   }
-
 
 }

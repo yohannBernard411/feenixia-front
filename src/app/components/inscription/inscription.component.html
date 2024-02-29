@@ -2,9 +2,9 @@
   <app-header></app-header>
   <h2 class="subtitle title-font">Connexion</h2>
   <div class="connexion-form">
-    <div class="new white-background">
-      <h4>Nouveau sur FEENIXIA</h4>
-        <form [formGroup]="formNew" (ngSubmit)="onSubmitNew($event)" class="formulaire text-font">
+      <div class="new white-background">
+        <h4>Nouveau sur FEENIXIA</h4>
+          <form [formGroup]="formNew" (ngSubmit)="onSubmitNew($event)" class="formulaire text-font">
             <label>
               Votre nom:<br>
               <input type="string" formControlName="name" class="name-email-mdp">
@@ -14,8 +14,8 @@
             <div *ngIf="formNew.get('name')?.errors && formNew.get('name')!.errors!['minlength']">Le nom doit contenir au moins 6 caractères.</div>
             <div *ngIf="formNew.get('name')?.errors && formNew.get('name')!.errors!['maxlength']">Le nom doit contenir au maximum 22 caractères.</div>
             <label>
-                Votre email:<br>
-                <input type="email" formControlName="email" class="name-email-mdp">
+              Votre email:<br>
+              <input type="email" formControlName="email" class="name-email-mdp">
             </label>
             <br>
             <div *ngIf="formNew.get('email')?.errors && formNew.get('email')!.errors!['required']">L'email nom est requis.</div>
@@ -34,5 +34,9 @@
             <a href="/connexion">Déja inscrit</a>
             <button *ngIf="formNew.get('name')?.errors || formNew.get('email')?.errors || formNew.get('mdp')?.errors" class="cta invalid-cta" type="submit">Envoyer</button>
             <button *ngIf="!formNew.get('name')?.errors && !formNew.get('email')?.errors && !formNew.get('mdp')?.errors" class="cta valid-cta" type="submit">Envoyer</button>
-          </form>
+            </form>
+      </div>
+  </div>
 </div>
+
+<ng-toast></ng-toast>
