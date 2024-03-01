@@ -11,8 +11,12 @@ import { SearchComponent } from './components/search/search.component';
 import { LegalnoticeComponent } from './components/legalnotice/legalnotice.component';
 import { InscriptionComponent } from './components/inscription/inscription.component';
 import { GuidanceComponent } from './components/guidance/guidance.component';
+import { MagnetismeComponent } from './components/magnetisme/magnetisme.component';
+import { WellbeingComponent } from './components/wellbeing/wellbeing.component';
 
 const routes: Routes = [
+  { path: 'wellbeing', component: WellbeingComponent},
+  { path: 'magnetisme', component: MagnetismeComponent},
   { path: 'guidance', component: GuidanceComponent},
   { path: 'inscription', component: InscriptionComponent},
   { path: 'legalnotice', component: LegalnoticeComponent},

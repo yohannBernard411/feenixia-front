@@ -1,0 +1,21 @@
+@import "../../../styles.scss";
+
+.fullpage{
+  overflow-y: auto;
+}
+.wellbeing{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 70vw;
+    padding: 20px;
+    margin: 20px 15vw 20px 15vw;
+}
+.wellbeing img{
+    width: 250px;
+    height: auto;
+}
+.description{
+    padding: 20px;
+}
