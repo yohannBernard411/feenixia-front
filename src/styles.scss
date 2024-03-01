@@ -50,6 +50,7 @@ $light: #E38CDFff;
     overflow: hidden;
 }
 
+
 //Affichage du scroll vertical
 /* width */
 ::-webkit-scrollbar {
@@ -99,6 +100,7 @@ background: $lightmain;
     border-radius: 5px;
     padding: 10px;
     text-decoration: none;
+    margin: 20px;
 }
 .valid-cta{
     background-color: $contrast;

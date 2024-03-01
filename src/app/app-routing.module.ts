@@ -10,8 +10,10 @@ import { ShoppingComponent } from './components/shopping/shopping.component';
 import { SearchComponent } from './components/search/search.component';
 import { LegalnoticeComponent } from './components/legalnotice/legalnotice.component';
 import { InscriptionComponent } from './components/inscription/inscription.component';
+import { GuidanceComponent } from './components/guidance/guidance.component';
 
 const routes: Routes = [
+  { path: 'guidance', component: GuidanceComponent},
   { path: 'inscription', component: InscriptionComponent},
   { path: 'legalnotice', component: LegalnoticeComponent},
   { path: 'search', component: SearchComponent},
