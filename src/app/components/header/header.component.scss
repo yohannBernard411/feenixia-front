@@ -1,4 +1,11 @@
-@import '../../../styles.scss';
+@import '../../../styles/mixins';
+@import '../../../styles/global-styles';
+@import '../../../styles/variables';
+
+.legend-font{
+    @include legend-font;
+}
+
 #header{
     width: 100vw;
     height: 10vh;

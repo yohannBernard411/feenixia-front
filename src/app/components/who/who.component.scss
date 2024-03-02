@@ -1,4 +1,18 @@
-@import "../../../styles.scss";
+@import '../../../styles/mixins';
+@import '../../../styles/global-styles';
+
+.fullpage{
+    @include fullpage;
+}
+.subtitle{
+    @include subtitle;
+}
+.title-font{
+    @include title-font;
+}
+.text-font{
+    @include text-font;
+}
 
 .content{
     width: 100vw;
@@ -12,10 +26,9 @@
 .description{
     width: 60vw;
     height: 70vh;
-    text-align: justify;   
-    overflow-y: scroll; 
+    text-align: justify;
+    overflow-y: scroll;
     scroll-padding: 30px;
-    // background-color: red;
     font-size: 24px;
     overflow-x: hidden;
 }
@@ -26,16 +39,13 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    // background-color: blue;
 }
 .margin-text{
     padding: 20px;
-    // background-color: purple;
 }
 .identite{
     width: 30vw;
     height: 60vh;
-    // background-color: purple;
 }
 #dessin{
     width: 30vw;

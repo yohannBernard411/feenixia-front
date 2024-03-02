@@ -1,4 +1,19 @@
-@import "../../../styles.scss";
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+@import '../../../styles/global-styles';
+
+.title-font{
+  @include title-font;
+}
+.text-font{
+  @include text-font;
+}
+.cta{
+  @include cta;
+}
+.valid-cta{
+  @include valid-cta;
+}
 
 .card{
     width: 20vw;

@@ -1,3 +1,16 @@
+@import '../../../styles/mixins';
+@import '../../../styles/global-styles';
+
+.fullpage{
+  @include fullpage;
+}
+.subtitle{
+  @include subtitle;
+}
+.title-font{
+  @include title-font;
+}
+
 .fullpage{
     overflow-y: scroll;
 }

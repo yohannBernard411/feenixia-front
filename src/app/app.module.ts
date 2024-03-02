@@ -43,10 +43,10 @@ import { WellbeingComponent } from './components/wellbeing/wellbeing.component';
     ShoppingComponent,
     SearchComponent,
     LegalnoticeComponent,
-   InscriptionComponent,
-   GuidanceComponent,
-   MagnetismeComponent,
-   WellbeingComponent
+    InscriptionComponent,
+    GuidanceComponent,
+    MagnetismeComponent,
+    WellbeingComponent
   ],
   imports: [
     BrowserModule,

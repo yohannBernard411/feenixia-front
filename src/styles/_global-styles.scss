@@ -1,0 +1,42 @@
+@import '/src/styles/variables';
+// Remise à zero 
+*{
+    margin: 0;
+    padding: 0;
+}
+//Affichage du scroll vertical
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+/* Track */
+::-webkit-scrollbar-track {
+box-shadow: inset 0 0 5px grey; 
+border-radius: 5px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: $darkmain; 
+border-radius: 5px;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: $lightmain; 
+}
+
+//media queries
+@media (max-width: 720px){
+    .fullpage{
+        background-image: linear-gradient(45deg, $dark, $alphadark, $alphalight, $light), url("https://i.ibb.co/8gnFRqL/cielSM.webp");
+    }
+}
+@media (min-width: 720px) and (max-width: 1440px) {
+    .fullpage{
+        background-image: linear-gradient(45deg, $dark, $alphadark, $alphalight, $light), url("https://i.ibb.co/8gnFRqL/cielIN.webp");
+    }
+}
+@media (min-width: 1440px){
+    .fullpage{
+        background-image: linear-gradient(45deg, $dark, $alphadark, $alphalight, $light), url("https://i.ibb.co/8gnFRqL/cielFP.webp");
+    }
+}

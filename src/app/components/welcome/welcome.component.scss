@@ -1,8 +1,22 @@
-@import "../../../styles.scss";
+@import '../../../styles/mixins';
+@import '../../../styles/global-styles';
+
+.fullpage{
+    @include fullpage;
+}
+.text-font{
+    @include text-font;
+}
 
 #title{
     color: white;
     text-align: center;
     padding-top: calc( 50vh - 16px);
     font-size: 40px;
+}
+.fullpage{
+    @include fullpage;
+}
+.text-font{
+    @include text-font;
 }

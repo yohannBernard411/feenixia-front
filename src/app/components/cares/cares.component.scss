@@ -1,6 +1,15 @@
-@import "../../../styles.scss";
+@import '../../../styles/mixins';
+@import '../../../styles/global-styles';
+
+.subtitle{
+  @include subtitle;
+}
+.title-font{
+  @include title-font;
+}
 
 .fullpage{
+  @include fullpage;
   overflow-y: hidden;
 }
 .all-cards{

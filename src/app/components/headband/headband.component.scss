@@ -1,4 +1,13 @@
-@import '../../../styles.scss';
+@import '../../../styles/mixins';
+@import '../../../styles/global-styles';
+@import '../../../styles/variables';
+
+.white-background{
+    @include white-background;
+}
+.signature{
+    @include signature;
+}
 
 .headband{
     width: 80vw;

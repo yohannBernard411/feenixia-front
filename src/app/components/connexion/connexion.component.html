@@ -23,7 +23,7 @@
                 <div *ngIf="formOld.get('mdp')?.errors && formOld.get('mdp')!.errors!['minlength']">Le mot de passe doit contenir au moins 6 caractères.</div>
                 <div *ngIf="formOld.get('mdp')?.errors && formOld.get('mdp')!.errors!['maxlength']">Le mot de passe doit contenir au maximum 22 caractères.</div>
                 <div *ngIf="formOld.get('mdp')?.errors && formOld.get('mdp')!.errors!['pattern']">Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un caractère spécial.</div>
-                <a href="/inscription">Pas encore inscrit</a>
+                <a routerLink="/inscription">Pas encore inscrit</a>
                 <button *ngIf="formOld.get('email')?.errors || formOld.get('mdp')?.errors" class="cta invalid-cta" type="submit">Envoyer</button>
                 <button *ngIf="!formOld.get('email')?.errors && !formOld.get('mdp')?.errors" class="cta valid-cta" type="submit">Envoyer</button>
               </form>

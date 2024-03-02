@@ -1,4 +1,21 @@
-@import '../../../styles.scss';
+@import '../../../styles/mixins';
+@import '../../../styles/global-styles';
+
+.fullpage{
+  @include fullpage;
+}
+.subtitle{
+  @include subtitle;
+}
+.title-font{
+  @include title-font;
+}
+.cta{
+  @include cta;
+}
+.valid-cta{
+  @include valid-cta;
+}
 
 table {
     width: 100vw;

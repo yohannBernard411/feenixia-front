@@ -1,4 +1,30 @@
-@import '../../../styles.scss';
+@import '../../../styles/mixins';
+@import '../../../styles/global-styles';
+
+.fullpage{
+    @include fullpage;
+}
+.subtitle{
+    @include subtitle;
+}
+.title-font{
+    @include title-font;
+}
+.white-background{
+    @include white-background;
+}
+.text-font{
+    @include text-font;
+}
+.cta{
+    @include cta;
+}
+.valid-cta{
+    @include valid-cta;
+}
+.invalid-cta{
+    @include invalid-cta;
+}
 
 .connexion-form{
     width: 100vw;

@@ -1,0 +1,61 @@
+// Définition des polices de caractéres
+@mixin text-font {
+  font-family: "Quintessential", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+@mixin title-font {
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+@mixin legend-font {
+  font-family: "Parisienne", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+// Disposition de tout les h2
+@mixin subtitle{
+  color: white;
+  text-align: center;
+  font-size: 32px;
+  margin: 20px 0 20px 0;
+}
+// Gestion du background image
+@mixin fullpage{
+  width: 100vw;
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+//vignette blanche-transparente
+@mixin white-background{
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+}
+// button
+@mixin cta{
+  color: $darkmain;
+  border-radius: 5px;
+  padding: 10px;
+  text-decoration: none;
+  margin: 20px;
+}
+@mixin valid-cta{
+  background-color: $contrast;
+}
+@mixin invalid-cta{
+  background-color: $lightmain;
+}
+// signature
+@mixin signature{
+  text-decoration: underline;
+  font-style: oblique 23deg;
+  text-align: center;
+  transform-origin: center;
+  transform: rotateZ(-20deg);
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+}
