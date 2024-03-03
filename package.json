@@ -3,14 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node serveur.js",
-    "build": "ng build --configuration production",
+    "start": "ng serve",
+    "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "e2e": "ng e2e",
-    "test:component": "cypress open",
-    "cypress:run": "cypress run",
-    "heroku-postbuild": "ng build --configuration production"
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
@@ -24,25 +20,17 @@
     "@angular/platform-browser": "^16.0.0",
     "@angular/platform-browser-dynamic": "^16.0.0",
     "@angular/router": "^16.0.0",
-    "express": "^4.18.2",
-    "force": "^0.0.3",
     "ng-angular-popup": "^0.5.2",
-    "path": "^0.12.7",
+    "ng-toast": "^1.5.6",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "typescript": "~5.0.2",
     "zone.js": "~0.13.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.0.4",
     "@angular/cli": "^16.2.12",
-    "@angular/compiler-cli": "^16.2.12",
-    "@cypress/schematic": "^2.5.1",
+    "@angular/compiler-cli": "^16.0.0",
     "@types/jasmine": "~4.3.0",
-    "@typescript-eslint/eslint-plugin": "^7.1.0",
-    "@typescript-eslint/parser": "^7.1.0",
-    "cypress": "^13.6.4",
-    "eslint": "^8.57.0",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
@@ -50,9 +38,5 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "typescript": "~5.0.2"
-  },
-  "engines": {
-    "node": "18.16.0",
-    "npm": "9.7.1"
   }
 }

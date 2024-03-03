@@ -112,9 +112,6 @@ export class HeadbandComponent{
   }
 
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
-    // Note that we provide the icon here as a string literal here due to a limitation in
-    // Stackblitz. If you want to provide the icon from a URL, you can use:
-    // `iconRegistry.addSvgIcon('thumbs-up', sanitizer.bypassSecurityTrustResourceUrl('icon.svg'));`
     iconRegistry.addSvgIconLiteral('thumb-up', sanitizer.bypassSecurityTrustHtml(THUMB_UP_ICON));
     iconRegistry.addSvgIconLiteral('thumb-down', sanitizer.bypassSecurityTrustHtml(THUMB_DOWN_ICON));
   }
