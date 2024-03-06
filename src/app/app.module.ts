@@ -7,6 +7,7 @@ import { NgToastModule } from 'ng-angular-popup';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
@@ -45,8 +46,7 @@ import { WellbeingComponent } from './components/wellbeing/wellbeing.component';
     InscriptionComponent,
     GuidanceComponent,
     MagnetismeComponent,
-    WellbeingComponent,
-    MatIconModule
+    WellbeingComponent
   ],
   imports: [
     BrowserModule,
@@ -56,8 +56,7 @@ import { WellbeingComponent } from './components/wellbeing/wellbeing.component';
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    NgToastModule,
-    HeaderComponent
+    NgToastModule
   ],
   providers: [],
   bootstrap: [AppComponent]
