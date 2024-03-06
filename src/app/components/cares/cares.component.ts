@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CaresService } from 'src/app/services/cares.service';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-cares',

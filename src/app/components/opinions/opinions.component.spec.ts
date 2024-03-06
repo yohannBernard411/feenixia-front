@@ -1,6 +1,7 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { OpinionsComponent } from './opinions.component';
 import { HeadbandComponent } from '../headband/headband.component';
+import { HeaderComponent } from '../header/header.component';
 
 describe('OpinionsComponent', () => {
   let component: OpinionsComponent;

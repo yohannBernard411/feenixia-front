@@ -1,5 +1,6 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { HeadbandComponent } from './headband.component';
+import { MatIconModule } from '@angular/material/icon';
 
 describe('HeadbandComponent', () => {
   let component: HeadbandComponent;
