@@ -36,4 +36,4 @@ jobs:
         FTP_PASSWORD: ${{ secrets.MDP }}
         FTP_HOST: ${{ secrets.NOM_D_HOTE_FTP }}
         FTP_REMOTE_DIR: ${{ secrets.DOSSIER_OU_TELECHARGER_LES_FICHIERS }}
-        GITHUB_LOCAL_DIR: ./dist/feenixia-front/
+        GITHUB_LOCAL_DIR: ./dist/feenixia/
