@@ -1,5 +1,7 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { ShoppingComponent } from './shopping.component';
+import { HeaderComponent } from '../header/header.component';
+import { MatIcon } from '@angular/material/icon';
 
 describe('ShoppingComponent', () => {
   let component: ShoppingComponent;
@@ -7,7 +9,7 @@ describe('ShoppingComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ShoppingComponent ]
+      declarations: [ ShoppingComponent, HeaderComponent, MatIcon ]
     })
     .compileComponents();
   });
@@ -37,8 +39,8 @@ describe('ShoppingComponent', () => {
 
   it('should display article details correctly', () => {
     component.currentShoppingByUser = [
-      { img: 'path/to/image.jpg', name: 'Article 1', quantite: 2, prix: 10 },
-      { img: 'path/to/image.jpg', name: 'Article 2', quantite: 1, prix: 20 }
+      { img: 'path/to/image.jpg', name: 'Article 1', quantite: 2, prix: 1000 },
+      { img: 'path/to/image.jpg', name: 'Article 2', quantite: 1, prix: 2000 }
     ];
     fixture.detectChanges();
 
@@ -51,14 +53,14 @@ describe('ShoppingComponent', () => {
 
   it('should calculate total correctly', () => {
     component.currentShoppingByUser = [
-      { img: 'path/to/image.jpg', name: 'Article 1', quantite: 2, prix: 10 },
-      { img: 'path/to/image.jpg', name: 'Article 2', quantite: 1, prix: 20 }
+      { img: 'path/to/image.jpg', name: 'Article 1', quantite: 2, prix: 1000 },
+      { img: 'path/to/image.jpg', name: 'Article 2', quantite: 1, prix: 2000 }
     ];
     fixture.detectChanges();
 
     const compiled = fixture.nativeElement;
     const totalCell = compiled.querySelector('tfoot td:last-child');
-    expect(totalCell.textContent.trim()).toBe('40'); // Expected total is 40 (2 * 10 + 1 * 20)
+    expect(totalCell.textContent.trim()).toBe('40,00€'); // Expected total is 40 (2 * 10 + 1 * 20)
   });
 
 });

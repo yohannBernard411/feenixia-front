@@ -1,5 +1,7 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { GuidanceComponent } from './guidance.component';
+import { HeaderComponent } from '../header/header.component';
+import { MatIcon } from '@angular/material/icon';
 
 describe('GuidanceComponent', () => {
   let component: GuidanceComponent;
@@ -7,7 +9,7 @@ describe('GuidanceComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GuidanceComponent ]
+      declarations: [ GuidanceComponent, HeaderComponent, MatIcon ]
     })
     .compileComponents();
   });
@@ -28,7 +30,7 @@ describe('GuidanceComponent', () => {
     expect(compiled.querySelector('.subtitle').textContent).toContain('Les guidances');
     expect(compiled.querySelectorAll('.guidance').length).toBe(3); // Vérifiez le nombre de guidances
     // Vérifiez les descriptions des guidances
-    expect(compiled.querySelectorAll('.description p').length).toBe(3); // Vérifiez le nombre de paragraphes de description
+    expect(compiled.querySelectorAll('.description p').length).toBe(4); // Vérifiez le nombre de paragraphes de description
     // Vérifiez les prix des guidances
     expect(compiled.querySelectorAll('.description span').length).toBe(3); // Vérifiez le nombre de prix affichés
     // Vérifiez la présence des boutons "Ajouter au panier"

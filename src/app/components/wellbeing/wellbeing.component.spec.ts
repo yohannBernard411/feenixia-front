@@ -1,5 +1,7 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { WellbeingComponent } from './wellbeing.component';
+import { HeaderComponent } from '../header/header.component';
+import { MatIcon } from '@angular/material/icon';
 
 describe('WellbeingComponent', () => {
   let component: WellbeingComponent;
@@ -7,7 +9,7 @@ describe('WellbeingComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WellbeingComponent ]
+      declarations: [ WellbeingComponent, HeaderComponent, MatIcon ]
     })
     .compileComponents();
   });

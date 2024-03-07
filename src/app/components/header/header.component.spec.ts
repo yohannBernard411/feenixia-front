@@ -1,6 +1,7 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { HeaderComponent } from './header.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { MatIcon } from '@angular/material/icon';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -8,7 +9,7 @@ describe('HeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ],
+      declarations: [ HeaderComponent, MatIcon ],
       imports: [ RouterTestingModule ]
     })
     .compileComponents();
@@ -30,7 +31,7 @@ describe('HeaderComponent', () => {
     expect(compiled.querySelector('#logo')).toBeTruthy();
     expect(compiled.querySelector('#menu')).toBeTruthy();
     expect(compiled.querySelector('#icon')).toBeTruthy();
-    expect(compiled.querySelectorAll('.menu-link').length).toEqual(5);
+    expect(compiled.querySelectorAll('.menu-link').length).toEqual(8);
   });
 
   it('should have correct router links', () => {

@@ -1,5 +1,8 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { WelcomeComponent } from './welcome.component';
+import { HeaderComponent } from '../header/header.component';
+import { FooterComponent } from '../footer/footer.component';
+import { MatIcon } from '@angular/material/icon';
 
 describe('WelcomeComponent', () => {
   let component: WelcomeComponent;
@@ -7,7 +10,7 @@ describe('WelcomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WelcomeComponent ]
+      declarations: [ WelcomeComponent, HeaderComponent, FooterComponent, MatIcon ]
     })
     .compileComponents();
   });

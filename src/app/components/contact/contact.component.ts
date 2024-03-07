@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { NgToastService } from 'ng-angular-popup';
 
+
+
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',

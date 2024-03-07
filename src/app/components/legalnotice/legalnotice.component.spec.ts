@@ -1,5 +1,7 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { LegalnoticeComponent } from './legalnotice.component';
+import { HeaderComponent } from '../header/header.component';
+import { MatIcon } from '@angular/material/icon';
 
 describe('LegalnoticeComponent', () => {
   let component: LegalnoticeComponent;
@@ -7,7 +9,7 @@ describe('LegalnoticeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LegalnoticeComponent ]
+      declarations: [ LegalnoticeComponent, HeaderComponent, MatIcon ]
     })
     .compileComponents();
   });

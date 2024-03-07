@@ -1,6 +1,8 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SearchComponent } from './search.component';
+import { HeaderComponent } from '../header/header.component';
+import { MatIcon } from '@angular/material/icon';
 
 describe('SearchComponent', () => {
   let component: SearchComponent;
@@ -8,7 +10,7 @@ describe('SearchComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SearchComponent ],
+      declarations: [ SearchComponent, HeaderComponent, MatIcon ],
       imports: [ReactiveFormsModule] // Import du module ReactiveFormsModule pour utiliser les formulaires réactifs
     })
     .compileComponents();

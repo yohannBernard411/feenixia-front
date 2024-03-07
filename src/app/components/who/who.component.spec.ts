@@ -1,5 +1,7 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { WhoComponent } from './who.component';
+import { HeaderComponent } from '../header/header.component';
+import { MatIcon } from '@angular/material/icon';
 
 describe('WhoComponent', () => {
   let component: WhoComponent;
@@ -7,7 +9,7 @@ describe('WhoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WhoComponent ]
+      declarations: [ WhoComponent, HeaderComponent, MatIcon ]
     })
     .compileComponents();
   });

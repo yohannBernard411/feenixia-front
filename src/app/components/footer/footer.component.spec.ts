@@ -1,5 +1,6 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { FooterComponent } from './footer.component';
+import { MatIcon } from '@angular/material/icon';
 
 describe('FooterComponent', () => {
   let component: FooterComponent;
@@ -7,7 +8,7 @@ describe('FooterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FooterComponent ]
+      declarations: [ FooterComponent, MatIcon ]
     })
     .compileComponents();
   });
@@ -31,7 +32,7 @@ describe('FooterComponent', () => {
   it('should contain legal notice link', () => {
     const compiled = fixture.nativeElement;
     const legalNoticeLink = compiled.querySelector('.legal-notice');
-    expect(legalNoticeLink.getAttribute('href')).toBe('/legalnotice');
+    expect(legalNoticeLink.getAttribute('routerLink')).toBe('/legalnotice');
   });
 
   it('should contain social media icons', () => {

@@ -2,6 +2,7 @@ import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { OpinionsComponent } from './opinions.component';
 import { HeadbandComponent } from '../headband/headband.component';
 import { HeaderComponent } from '../header/header.component';
+import { MatIcon } from '@angular/material/icon';
 
 describe('OpinionsComponent', () => {
   let component: OpinionsComponent;
@@ -9,7 +10,7 @@ describe('OpinionsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OpinionsComponent, HeadbandComponent ]
+      declarations: [ OpinionsComponent, HeadbandComponent, HeaderComponent, MatIcon ]
     })
     .compileComponents();
   });

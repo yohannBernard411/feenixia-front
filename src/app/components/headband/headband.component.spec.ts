@@ -1,6 +1,6 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { HeadbandComponent } from './headband.component';
-import { MatIconModule } from '@angular/material/icon';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
 
 describe('HeadbandComponent', () => {
   let component: HeadbandComponent;
@@ -8,7 +8,7 @@ describe('HeadbandComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeadbandComponent ]
+      declarations: [ HeadbandComponent, MatIcon ]
     })
     .compileComponents();
   });
