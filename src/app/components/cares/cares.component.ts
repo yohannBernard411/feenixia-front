@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { CaresService } from 'src/app/services/cares.service';
-import { HeaderComponent } from '../header/header.component';
+import { CareService } from 'src/app/services/care.service';
 
 @Component({
   selector: 'app-cares',
@@ -10,8 +9,8 @@ import { HeaderComponent } from '../header/header.component';
 
 export class CaresComponent {
 
-  constructor(private caresService: CaresService) { }
+  constructor(private careService: CareService) { }
 
-        allCares = this.caresService.getAllCares();
+        allCares = this.careService.getAllCares();
 
 }

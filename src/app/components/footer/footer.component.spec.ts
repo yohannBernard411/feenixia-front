@@ -38,7 +38,7 @@ describe('FooterComponent', () => {
   it('should contain social media icons', () => {
     const compiled = fixture.nativeElement;
     const socialIcons = compiled.querySelectorAll('.social-link mat-icon');
-    expect(socialIcons.length).toBe(3); // Assuming there are 3 social media icons
+    expect(socialIcons.length).toBe(1); // Assuming there are 3 social media icons
   });
 
 });

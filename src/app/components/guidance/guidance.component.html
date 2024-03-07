@@ -2,56 +2,17 @@
     <app-header></app-header>
     <h2 class="subtitle title-font">Les guidances</h2>
     <div class="all-guidance">
-        <div class="guidance white-background">
-            <img src="https://i.ibb.co/stTkBZf/cartesIN.webp">
-            <div class="description">
-                <p>
-                    Les guidances sont des tirages qui ont pour but de vous donner une vue d’ensemble de votre situation.
-                    J’utilise pour cela différents jeux de cartes qui me servent de support afin de recevoir les messages qu’ensuite je peux vous transmettre.
-                    Les guidances diffèrent de la voyance car elles permettent de vous guider et de vous donner les moyens de changer certaines situations.
-                    Vous restez maître du chemin que vous souhaitez emprunter.
-                </p>
-                <span>Guidance complète : 50 €</span><button class="cta valid-cta">Ajouter au panier</button>
-            </div>
-        </div>
-
-        <hr>
-
-        <div class="guidance white-background">
-            <img src="https://i.ibb.co/stTkBZf/cartesIN.webp">
-            <div class="description">
-                <p>
-                    Cette Guidance permet d’explorer l’ensemble de votre présent et de votre avenir proche.
-                    Parfois, suivant les messages, elle permet aussi de plonger dans votre passé en plus de votre présent et de votre avenir.
-                    Les domaines traités sont :
-                </p>
-                <ul class="puce-lotus">
-                    <li>Votre situation actuelle</li>
-                    <li>Professionnelle</li>
-                    <li>Sentimental</li>
-                    <li>Questions variées, idées, projet...</li>
-                </ul>
-                <span>Guidance sur un sujet précis : 30 €</span><button class="cta valid-cta">Ajouter au panier</button>
-                <p>Comme l’intitulé l’exprime, cette Guidance ne traite que sur un sujet précis de la liste précédente.</p>
-            </div>
-        </div>
-
-        <hr>
-
-        <div class="guidance white-background">
-            <img src="https://i.ibb.co/stTkBZf/cartesIN.webp">
-            <div class="description">
-                <p>
-                    Votre corps s’exprime, les maux sont des mots que le corps vous exprime.
-                    Dans cette Guidance les cartes m’aident à vous expliquer ce que votre corps essaie de vous faire comprendre.
-                    De cette manière vous prenez conscience du problème afin de pouvoir y remédier par vous-même si vous en avez la capacité.
-                    Il est également possible de rentrer plus en détail là-dessus pour vous accompagner dans cette démarche par le biais d’une autre prestation qui est « le bien être par le déblocage des blessures passées ».
-                    Attention, je ne traite pas en guidance les questions sur la mort ou la santé.
-                    Chaque guidance est faite à distance et vous sera transmise par message vocal ou vidéo, je reste ensuite disponible par message sur une durée maximum de 15 minutes si vous avez besoin de complément ou d’explications.
-                    Aucun autre sujet que celui demandé au préalable ne sera traité durant ce moment d’échange.
-                </p>
-                <span>Guidance bien-être : 40 €</span><button class="cta valid-cta">Ajouter au panier</button>
+        <div  *ngFor="let guidance of allGuidances">
+            <div class="guidance white-background">
+                <img src={{guidance.img}}>
+                <div class="description">
+                    <p>{{guidance.content}}
+                    </p>
+                    <span>{{guidance.title}} : {{formatagePrix(guidance.price_cents)}}</span><button (click)="shopping_add(guidance.id, guidance.title)" class="cta valid-cta">Ajouter au panier</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<ng-toast></ng-toast>

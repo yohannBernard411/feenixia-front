@@ -19,4 +19,9 @@
     height: 70vh;
     overflow-y: scroll;
     margin: 0 10vw 0 10vw;
+    padding: 20px;
+}
+.puce-lotus{
+    list-style-image: url('../../../assets/puce.png');
+    list-style-position: inside;
 }
