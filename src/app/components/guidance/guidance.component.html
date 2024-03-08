@@ -5,8 +5,8 @@
         <div  *ngFor="let guidance of allGuidances">
             <div class="guidance white-background">
                 <img src={{guidance.img}}>
-                <div class="description">
-                    <p>{{guidance.content}}
+                <div class="description lotus-parent">
+                    <p id={{guidance.id}}>{{processString(guidance.content, guidance.id)}}
                     </p>
                     <span>{{guidance.title}} : {{formatagePrix(guidance.price_cents)}}</span><button (click)="shopping_add(guidance.id, guidance.title)" class="cta valid-cta">Ajouter au panier</button>
                 </div>
