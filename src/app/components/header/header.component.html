@@ -10,7 +10,11 @@
     </nav>
     <div id="icon">
         <a class="menu-link" routerLink="/connexion"><mat-icon title="Se connecter">person</mat-icon></a>
-        <a class="menu-link" routerLink="/shopping"><mat-icon title="Mon panier">shopping_basket</mat-icon></a>
+        <!-- <a class="menu-link" routerLink="/shopping"><mat-icon title="Mon panier">shopping_basket</mat-icon></a> -->
+        <a class="menu-link" routerLink="/shopping" id="cart">
+            <mat-icon title="Mon panier">shopping_basket</mat-icon>
+            <div class="badge" id="cart-badge">{{this.nbArticles}}</div>
+          </a>
         <a class="menu-link" routerLink="/search"><mat-icon title="Rechercher">search</mat-icon></a>
     </div>
 </div>

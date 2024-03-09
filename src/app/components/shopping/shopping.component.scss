@@ -3,6 +3,7 @@
 
 .fullpage{
   @include fullpage;
+  overflow-y: auto;
 }
 .subtitle{
   @include subtitle;
@@ -15,6 +16,13 @@
 }
 .valid-cta{
   @include valid-cta;
+}
+.quantity{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
 }
 
 table {

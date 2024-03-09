@@ -18,9 +18,13 @@
           <tr *ngFor="let article of currentShoppingByUser">
             <th scope="row"><img src={{article.img}}></th><!-- image-->
             <td>{{article.name}}</td><!-- designation-->
-            <td>{{article.quantite}}</td><!-- quantité-->
-            <td>{{formatagePrix(article.prix)}}</td><!-- prix unitaire-->
-            <td>{{formatagePrix(article.quantite*article.prix)}}</td><!-- totla-->
+            <td class="quantity">
+              <mat-icon (click)="quantity_remove(article.id)" svgIcon="moins" aria-hidden="false" aria-label="svg icon"></mat-icon>
+              {{article.quantity}}
+              <mat-icon (click)="quantity_add(article.id)" svgIcon="plus" aria-hidden="false" aria-label="svg icon"></mat-icon>
+            </td><!-- quantité-->
+            <td>{{formatagePrix(article.price)}}</td><!-- prix unitaire-->
+            <td>{{formatagePrix(article.quantity*article.price)}}</td><!-- totla-->
           </tr>
           
       </tbody>

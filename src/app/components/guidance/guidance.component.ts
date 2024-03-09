@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NgToastService } from 'ng-angular-popup';
 import { GuidanceService } from 'src/app/services/guidance.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { ShoppingService } from 'src/app/services/shopping.service';
+import { DataService } from 'src/app/services/data.service';
 
 
 @Component({
@@ -11,17 +13,17 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 })
 export class GuidanceComponent {
 
-  constructor(private guidanceService: GuidanceService, private toast: NgToastService, private sanitizer: DomSanitizer){}
+  constructor(private dataService: DataService, private guidanceService: GuidanceService, private toast: NgToastService, private sanitizer: DomSanitizer, private shoppingService: ShoppingService){}
 
   showSuccess(title: string) {
     this.toast.success({detail:"SUCCESS",summary:'Merci, l\'article ['+title+'] à bien été ajouté a votre panier.',duration:5000});
   }
-  
   showError(title: string) {
     this.toast.error({detail:"ERROR",summary:'Oups, l\'article '+title+' n\'a pas pu être ajouté a votre panier',sticky:true, duration:5000});
   }
 
   allGuidances = this.guidanceService.getAllGuidances();
+  nbArticles: number = this.shoppingService.nbArticles();
   
 
   formatagePrix(prix: number): string { //accept 12350 and return 123,50€ 
@@ -30,9 +32,8 @@ export class GuidanceComponent {
   }
 
   shopping_add(id: number, title: string){
-    // methode à appeler pour mettre l'article dans le panier.
-    // emettre un popup pour indiquer que l'article est dans le panier.
-    console.log("values: "+id+" et :"+title);
+    this.shoppingService.addArticle(id);
+    this.dataService.updateData(this.shoppingService.nbArticles());
     this.showSuccess(title);
   }
 
@@ -45,7 +46,6 @@ export class GuidanceComponent {
         const part3 = input.substring(input.indexOf("</ul>") + 5, input.length);
         
         const ulElement = document.createElement('ul');
-        ulElement.classList.add("puce-lotus");
         const liElements = part2.split(";;");
 
         liElements.forEach(element => {
@@ -53,6 +53,12 @@ export class GuidanceComponent {
             liElement.textContent = element;
             ulElement.appendChild(liElement);
         });
+
+        ulElement.style.listStyleImage = 'url("../../../assets/puce.png")';
+        ulElement.style.listStylePosition = 'inside';
+
+                // list-style-image: url('../../../assets/puce.png');
+        // list-style-position: inside;
 
         const output1 = document.createElement('p');
         output1.textContent = part1;

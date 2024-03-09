@@ -39,8 +39,8 @@ describe('ShoppingComponent', () => {
 
   it('should display article details correctly', () => {
     component.currentShoppingByUser = [
-      { img: 'path/to/image.jpg', name: 'Article 1', quantite: 2, prix: 1000 },
-      { img: 'path/to/image.jpg', name: 'Article 2', quantite: 1, prix: 2000 }
+      { id: 1, img: 'path/to/image.jpg', name: 'Article 1', quantity: 2, price: 1000 },
+      { id: 2, img: 'path/to/image.jpg', name: 'Article 2', quantity: 1, price: 2000 }
     ];
     fixture.detectChanges();
 
@@ -53,8 +53,8 @@ describe('ShoppingComponent', () => {
 
   it('should calculate total correctly', () => {
     component.currentShoppingByUser = [
-      { img: 'path/to/image.jpg', name: 'Article 1', quantite: 2, prix: 1000 },
-      { img: 'path/to/image.jpg', name: 'Article 2', quantite: 1, prix: 2000 }
+      { id: 1, img: 'path/to/image.jpg', name: 'Article 1', quantity: 2, price: 1000 },
+      { id: 2, img: 'path/to/image.jpg', name: 'Article 2', quantity: 1, price: 2000 }
     ];
     fixture.detectChanges();
 

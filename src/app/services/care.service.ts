@@ -30,5 +30,6 @@ export class CareService {
     const care4 = {id: 4, title: "Les guidances", content: "Les guidances sont des tirages qui ont pour but de vous donner une vue d’ensemble de votre situation. J’utilise pour cela différents jeux de cartes qui me servent de support afin de recevoir les message qu’ensuite je peux vous transmettre. Les guidances diffèrent de la voyance car elles permettent de vous guider et de vous donner les moyens de changer certaines situations. Vous restez maître du chemin que vous souhaitez emprunter.", img: "https://i.ibb.co/stTkBZf/cartesIN.webp", cta: "/guidances"};
     return [care1, care2, care3, care4];
   }
+
   
 }
