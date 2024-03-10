@@ -6,6 +6,7 @@
             <div class="magnetisme white-background">
                 <img src={{magnetisme.img}}>
                 <div class="description">
+                    <h2>{{magnetisme.title}}</h2>
                     <p>{{processString(magnetisme.content)}}
                     </p>
                     <span>{{magnetisme.title}} : {{formatagePrix(magnetisme.price_cents)}}</span><button (click)="shopping_add(magnetisme.id, magnetisme.title)" class="cta valid-cta">Ajouter au panier</button>

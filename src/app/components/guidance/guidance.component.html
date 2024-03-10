@@ -6,6 +6,7 @@
             <div class="guidance white-background">
                 <img src={{guidance.img}}>
                 <div class="description lotus-parent">
+                    <h2>{{guidance.title}}</h2>
                     <p id={{guidance.id}}>{{processString(guidance.content, guidance.id)}}
                     </p>
                     <span>{{guidance.title}} : {{formatagePrix(guidance.price_cents)}}</span><button (click)="shopping_add(guidance.id, guidance.title)" class="cta valid-cta">Ajouter au panier</button>

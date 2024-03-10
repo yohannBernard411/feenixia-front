@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgToastService } from 'ng-angular-popup';
 import { MagnetismeService } from 'src/app/services/magnetisme.service';
+import { ShoppingService } from 'src/app/services/shopping.service';
 
 @Component({
   selector: 'app-magnetisme',
@@ -10,7 +11,7 @@ import { MagnetismeService } from 'src/app/services/magnetisme.service';
 export class MagnetismeComponent {
 
   
-  constructor(private magnetismeService: MagnetismeService, private toast: NgToastService){}
+  constructor(private magnetismeService: MagnetismeService, private toast: NgToastService, private shoppingService: ShoppingService){}
 
   showSuccess(title: string) {
     this.toast.success({detail:"SUCCESS",summary:'Merci, l\'article ['+title+'] à bien été ajouté a votre panier.',duration:5000});
@@ -53,10 +54,9 @@ export class MagnetismeComponent {
     return prix.toString().substring(0, taille-2)+","+prix.toString().substring(taille-2, taille)+"€";
   }
 
+
   shopping_add(id: number, title: string){
-    // methode à appeler pour mettre l'article dans le panier.
-    // emettre un popup pour indiquer que l'article est dans le panier.
-    console.log("values: "+id+" et :"+title);
+    this.shoppingService.addArticle(id);
     this.showSuccess(title);
   }
 

@@ -33,7 +33,7 @@ export class GuidanceComponent {
 
   shopping_add(id: number, title: string){
     this.shoppingService.addArticle(id);
-    this.dataService.updateData(this.shoppingService.nbArticles());
+    // this.dataService.updateData(this.shoppingService.nbArticles());
     this.showSuccess(title);
   }
 

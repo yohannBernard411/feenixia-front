@@ -63,19 +63,11 @@ export class ShoppingComponent {
     }
 
     quantity_remove(id: number){
-      this.currentShoppingByUser.forEach(element => {
-        if (element.id == id){
-          element.quantity -=1;
-        }
-      })
+      this.shoppingService.removeArticle(id);
     }
 
     quantity_add(id: number){
-      this.currentShoppingByUser.forEach(element => {
-        if (element.id == id){
-          element.quantity +=1;
-        }
-      })
+      this.shoppingService.addArticle(id);
     }
    
 

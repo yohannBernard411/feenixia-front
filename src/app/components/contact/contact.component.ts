@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { NgToastService } from 'ng-angular-popup';
 
 
@@ -30,14 +30,18 @@ export class ContactComponent {
   // }
 
   form: FormGroup = new FormGroup({
-    name: new FormControl(''),
-    email: new FormControl(''),
-    message: new FormControl('')
+    name: new FormControl('', [Validators.minLength(6), Validators.maxLength(100), Validators.required]),
+    email: new FormControl('', [Validators.minLength(6), Validators.maxLength(100), Validators.required, Validators.email]),
+    message: new FormControl('', [Validators.minLength(6), Validators.maxLength(500), Validators.required])
   });
 
   onSubmit(e: Event) {
     const formData = this.form.value;
+    this.form.get('name')!.setValidators([Validators.minLength(6), Validators.maxLength(100), Validators.required]);
+    this.form.get('email')!.setValidators([Validators.minLength(6), Validators.maxLength(100), Validators.required, Validators.email]);
+    this.form.get('message')!.setValidators([Validators.minLength(6), Validators.maxLength(500), Validators.required]);
     this.showSuccess(this.form.get('name')!.value, this.form.get('email')!.value);
+
     //   e.preventDefault();
     //   emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', e.target as HTMLFormElement, 'YOUR_PUBLIC_KEY')
     //     .then((result: EmailJSResponseStatus) => {

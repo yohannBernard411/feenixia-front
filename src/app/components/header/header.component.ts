@@ -11,9 +11,9 @@ import { DataService } from 'src/app/services/data.service';
 
 export class HeaderComponent implements OnInit {
 
-  constructor(private dataService: DataService, private shoppingService: ShoppingService){}
-
   nbArticles: number = this.shoppingService.nbArticles();
+
+  constructor(private dataService: DataService, private shoppingService: ShoppingService){}
 
   ngOnInit() {
     this.dataService.data$.subscribe(data => {

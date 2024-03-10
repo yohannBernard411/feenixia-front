@@ -22,11 +22,18 @@
                   Votre nom:<br>
                   <input type="string" formControlName="name" class="name-email">
                 </label>
+                <div *ngIf="form.get('name')?.errors && form.get('name')!.errors!['required']">Le nom est requis.</div>
+                <div *ngIf="form.get('name')?.errors && form.get('name')!.errors!['minlength']">L'email doit contenir au moins 6 caractères.</div>
+                <div *ngIf="form.get('name')?.errors && form.get('name')!.errors!['maxlength']">L'email doit contenir au maximum 100 caractères.</div>
                 <br>
                 <label class="email-zone">
                     Votre email:<br>
                     <input type="email" formControlName="email" class="name-email">
                   </label>
+                  <div *ngIf="form.get('email')?.errors && form.get('email')!.errors!['required']">L'email est requis.</div>
+                <div *ngIf="form.get('email')?.errors && form.get('email')!.errors!['minlength']">L'email doit contenir au moins 6 caractères.</div>
+                <div *ngIf="form.get('email')?.errors && form.get('email')!.errors!['maxlength']">L'email doit contenir au maximum 100 caractères.</div>
+                <div *ngIf="form.get('email')?.errors && form.get('email')!.errors!['email']">L'email doit être de la forme: nom @ site . extension</div>
                   <br>
                 <label class="message-zone">
                   Votre message:<br>
@@ -35,6 +42,10 @@
                     Votre texte ici...
                   </textarea>
                 </label>
+                <div *ngIf="form.get('message')?.errors && form.get('message')!.errors!['required']">Le nom est requis.</div>
+                <div *ngIf="form.get('message')?.errors && form.get('message')!.errors!['minlength']">L'email doit contenir au moins 6 caractères.</div>
+                <div *ngIf="form.get('message')?.errors && form.get('message')!.errors!['maxlength']">L'email doit contenir au maximum 100 caractères.</div>
+                
                 <br>
               </div>
               <div>
