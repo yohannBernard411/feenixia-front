@@ -24,7 +24,6 @@ export class GuidanceComponent {
 
   allGuidances = this.guidanceService.getAllGuidances();
   nbArticles: number = this.shoppingService.nbArticles();
-  
 
   formatagePrix(prix: number): string { //accept 12350 and return 123,50€ 
     const taille = prix.toString().length;
@@ -33,52 +32,29 @@ export class GuidanceComponent {
 
   shopping_add(id: number, title: string){
     this.shoppingService.addArticle(id);
-    // this.dataService.updateData(this.shoppingService.nbArticles());
     this.showSuccess(title);
   }
 
   processString(input: string, rank: number): string {
-    if (!input.includes("<ul>")){
+    if (!input.includes("<ul>")) {
         return input;
     } else {
-        const part1 = input.substring(0, input.indexOf("<ul>"));
-        const part2 = input.substring(input.indexOf("<ul>") + 4, input.indexOf("</ul>"));
-        const part3 = input.substring(input.indexOf("</ul>") + 5, input.length);
-        
-        const ulElement = document.createElement('ul');
-        const liElements = part2.split(";;");
-
-        liElements.forEach(element => {
-            const liElement = document.createElement('li');
-            liElement.textContent = element;
-            ulElement.appendChild(liElement);
-        });
-
-        ulElement.style.listStyleImage = 'url("../../../assets/puce.png")';
-        ulElement.style.listStylePosition = 'inside';
-
-                // list-style-image: url('../../../assets/puce.png');
-        // list-style-position: inside;
-
-        const output1 = document.createElement('p');
-        output1.textContent = part1;
-        
-        const output2 = ulElement;
-        
-        const output3 = document.createElement('p');
-        output3.textContent = part3;
-        
-        // Supprime le contenu actuel de l'élément avec l'ID "rank"
+        const [part1, ulContent, part3] = input.split(/<ul>|<\/ul>/);
+        const liElements = ulContent.split(";;").map(element => `<li>${element}</li>`).join("");
+        const ulElement = `<ul>${liElements}</ul>`;
+        const output = `<p>${part1}</p>${ulElement}<p>${part3}</p>`;
+        // Met à jour le contenu de l'élément avec l'ID "rank" et applique les styles
         const element = document.getElementById(rank.toString());
         if (element) {
-            element.innerHTML = ''; // vide le contenu de l'élément
-            // Ajoute les nouveaux éléments créés
-            element.appendChild(output1);
-            element.appendChild(output2);
-            element.appendChild(output3);
+            element.innerHTML = output;
+            const ul = element.querySelector('ul');
+            if (ul) {
+                ul.style.listStyleImage = 'url("../../../assets/puce.png")';
+                ul.style.listStylePosition = 'inside';
+            }
         }
-        
-        return output1.outerHTML + output2.outerHTML + output3.outerHTML;
+
+        return output;
     }
 }
 

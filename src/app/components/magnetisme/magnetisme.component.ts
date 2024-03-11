@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { NgToastService } from 'ng-angular-popup';
+import { DataService } from 'src/app/services/data.service';
 import { MagnetismeService } from 'src/app/services/magnetisme.service';
 import { ShoppingService } from 'src/app/services/shopping.service';
 
@@ -9,55 +11,50 @@ import { ShoppingService } from 'src/app/services/shopping.service';
   styleUrls: ['./magnetisme.component.scss']
 })
 export class MagnetismeComponent {
-
-  
-  constructor(private magnetismeService: MagnetismeService, private toast: NgToastService, private shoppingService: ShoppingService){}
+  constructor(private dataService: DataService, private magnetismeService: MagnetismeService, private toast: NgToastService, private sanitizer: DomSanitizer, private shoppingService: ShoppingService){}
 
   showSuccess(title: string) {
     this.toast.success({detail:"SUCCESS",summary:'Merci, l\'article ['+title+'] à bien été ajouté a votre panier.',duration:5000});
   }
-  
   showError(title: string) {
     this.toast.error({detail:"ERROR",summary:'Oups, l\'article '+title+' n\'a pas pu être ajouté a votre panier',sticky:true, duration:5000});
   }
 
   allMagnetismes = this.magnetismeService.getAllMagnetismes();
-
-  processString(input: string): string {
-    // Vérifier si la chaîne contient "<ul>" et "</ul>"
-    const ulStartIndex = input.indexOf("<ul>");
-    const ulEndIndex = input.indexOf("</ul>");
-
-    if (ulStartIndex === -1 || ulEndIndex === -1) {
-        // Si "<ul>" ou "</ul>" est manquant, retourner la chaîne d'origine
-        return input;
-    }
-    // Extraire le contenu entre "<ul>" et "</ul>"
-    const ulContent = input.substring(ulStartIndex + 4, ulEndIndex);
-    // Diviser le contenu en éléments à chaque ";"
-    const elements = ulContent.split(";");
-    // Créer une chaîne contenant les éléments enveloppés dans des balises "<li>"
-    const liElements = elements.map(element => `<li>${element.trim()}</li>`).join("");
-    // Remplacer le contenu entre "<ul>" et "</ul>" par les balises "<li>"
-    const processedString = input.substring(0, ulStartIndex) + "<ul>" + liElements + "</ul>" + input.substring(ulEndIndex + 5);
-    return processedString;
-}
-
-// // Exemple d'utilisation
-// const inputString = "<p>Contenu avant<ul>élément1;element2;element3</ul>Contenu après</p>";
-// const processedString = processString(inputString);
-// console.log(processedString);
-
+  nbArticles: number = this.shoppingService.nbArticles();
 
   formatagePrix(prix: number): string { //accept 12350 and return 123,50€ 
     const taille = prix.toString().length;
     return prix.toString().substring(0, taille-2)+","+prix.toString().substring(taille-2, taille)+"€";
   }
 
-
   shopping_add(id: number, title: string){
     this.shoppingService.addArticle(id);
     this.showSuccess(title);
   }
+
+  processString(input: string, rank: number): string {
+    if (!input.includes("<ul>")) {
+        return input;
+    } else {
+        const [part1, ulContent, part3] = input.split(/<ul>|<\/ul>/);
+        const liElements = ulContent.split(";;").map(element => `<li>${element}</li>`).join("");
+        const ulElement = `<ul>${liElements}</ul>`;
+        const output = `<p>${part1}</p>${ulElement}<p>${part3}</p>`;
+        // Met à jour le contenu de l'élément avec l'ID "rank" et applique les styles
+        const element = document.getElementById(rank.toString());
+        if (element) {
+            element.innerHTML = output;
+            const ul = element.querySelector('ul');
+            if (ul) {
+                ul.style.listStyleImage = 'url("../../../assets/puce.png")';
+                ul.style.listStylePosition = 'inside';
+            }
+        }
+
+        return output;
+    }
+}
+
 
 }

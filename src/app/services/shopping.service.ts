@@ -3,13 +3,19 @@ import { Shopping } from '../interfaces/shopping';
 import { CareService } from './care.service';
 import { GuidanceService } from './guidance.service';
 import { DataService } from './data.service';
+import { MagnetismeService } from './magnetisme.service';
+import { WellbeingService } from './wellbeing.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShoppingService {
 
-  constructor(private guidanceService: GuidanceService, private dataService: DataService){}
+  constructor(private guidanceService: GuidanceService,
+              private dataService: DataService,
+              private magnetismeService: MagnetismeService,
+              private wellbeingService: WellbeingService
+              ){}
 
 
   shop1 : Shopping = {"id": 1, "name": "Guidance compléte","img": "https://i.ibb.co/3TbMNg0/cartesSM.webp","quantity": 1,"price": 5000};
@@ -46,14 +52,20 @@ export class ShoppingService {
   }
 
   createArticle(id: number){
-    const guidance = this.guidanceService.findById(id);
+    let care = this.guidanceService.findById(id);
+    if (!care){
+      care = this.magnetismeService.findById(id);
+    }
+    if (!care){
+      care = this.wellbeingService.findById(id);
+    }
     const allShopping = this.getAllShoppings();
-    const findElement = allShopping.find(element => element.name == guidance.title);
+    const findElement = allShopping.find(element => element.name == care.title);
     if (findElement){
       this.addArticle(findElement.id);
     }else{
       const nb = this.nbArticles();
-      const newShoppingItem = this.createNew(nb+1, guidance.title, guidance.img, 1, guidance.price_cents);
+      const newShoppingItem = this.createNew(nb+1, care.title, care.img, 1, care.price_cents);
       this.allItems.push(newShoppingItem);
     }
   }

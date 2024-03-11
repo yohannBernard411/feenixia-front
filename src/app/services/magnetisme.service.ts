@@ -27,4 +27,9 @@ export class MagnetismeService {
     return [guidance1, guidance2, guidance3];
   }
 
+  findById(id: number): Magnetisme{
+    return {id: 2, title: "Guidance sur un sujet précis", content: "Cette Guidance permet d’explorer l’ensemble de votre présent et de votre avenir proche. Parfois, suivant les messages, elle permet aussi de plonger dans votre passé en plus de votre présent et de votre avenir. Les domaines traités sont : <ul>Votre situation actuelle,;;Professionnelle,;;Sentimental,;;Questions variées, idées, projet...</ul>. Comme l’intitulé l’exprime, cette Guidance ne traite que sur un sujet précis de la liste précédente..", img: "https://i.ibb.co/stTkBZf/cartesIN.webp", cta: "", category: "Magnetisme", price_cents: 3000};
+    
+  }
+
 }

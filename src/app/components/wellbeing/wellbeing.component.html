@@ -6,7 +6,7 @@
             <div class="wellbeing white-background">
                 <img src={{wellbeing.img}}>
                 <div class="description">
-                    <p>{{wellbeing.content}}
+                    <p>{{processString(wellbeing.content, wellbeing.id)}}
                     </p>
                     <span>{{wellbeing.title}} : {{formatagePrix(wellbeing.price_cents)}}</span><button (click)="shopping_add(wellbeing.id, wellbeing.title)" class="cta valid-cta">Ajouter au panier</button>
                 </div>
