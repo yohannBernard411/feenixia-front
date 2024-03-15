@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Care } from 'src/app/interfaces/care';
 import { CareService } from 'src/app/services/care.service';
 
 @Component({
@@ -11,6 +12,23 @@ export class CaresComponent {
 
   constructor(private careService: CareService) { }
 
-        allCares = this.careService.getAllCares();
+  allCares: Care[] = [];
+
+  ngOnInit(): void {
+    this.getAllCares();
+  }
+  
+  getAllCares(): void {
+    this.careService.getAllCares().subscribe(
+      cares => {
+        this.allCares = cares; // Assignez les données reçues à la variable allCares
+      },
+      error => {
+        console.log('Error:', error);
+      }
+    );
+  }
+
+       // allCares: Care[]= this.careService.getAllCares();
 
 }

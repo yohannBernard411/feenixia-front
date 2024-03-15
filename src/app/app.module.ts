@@ -26,6 +26,7 @@ import { InscriptionComponent } from './components/inscription/inscription.compo
 import { GuidanceComponent } from './components/guidance/guidance.component';
 import { MagnetismeComponent } from './components/magnetisme/magnetisme.component';
 import { WellbeingComponent } from './components/wellbeing/wellbeing.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { WellbeingComponent } from './components/wellbeing/wellbeing.component';
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    NgToastModule
+    NgToastModule,
+    HttpClientModule
   ],
   exports: [
     HeaderComponent,

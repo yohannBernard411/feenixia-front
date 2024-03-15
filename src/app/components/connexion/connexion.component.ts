@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { HeaderComponent } from '../header/header.component';
+import { UserInfoResponse } from 'src/app/interfaces/user-info-response';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-connexion',
@@ -11,7 +13,7 @@ import { HeaderComponent } from '../header/header.component';
 })
 export class ConnexionComponent {
 
-  constructor(private toast: NgToastService, private router: Router){}
+  constructor(private toast: NgToastService, private router: Router, private authService: AuthService){}
 
   showSuccessOld(name: string) {
     this.toast.success({detail:"SUCCESS",summary:'Bonjour '+name+', nous sommes heureux de vous revoir! Vous allez être redirigé vers l\'accueil' ,duration:5000});
@@ -22,26 +24,33 @@ export class ConnexionComponent {
   }
 
   formOld: FormGroup = new FormGroup({
-    email: new FormControl('', [Validators.minLength(6), Validators.maxLength(100), Validators.required, Validators.email]),
+    username: new FormControl('', [Validators.minLength(6), Validators.maxLength(100), Validators.required]),
     mdp: new FormControl('', [Validators.minLength(6), Validators.maxLength(22), Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')])
   });
 
   onSubmitOld(e: Event) {
     const formData2 = this.formOld.value;
-    this.formOld.get('email')!.setValidators([Validators.minLength(6), Validators.maxLength(100), Validators.required, Validators.email]);
+    this.formOld.get('username')!.setValidators([Validators.minLength(6), Validators.maxLength(100), Validators.required]);
     this.formOld.get('mdp')!.setValidators([Validators.minLength(6), Validators.maxLength(22), Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]);
-    const username = 'Super Yoyo'; // a la place de this.formNew.get('name')!.value
-    this.showSuccessOld(username);
+    const currentUser: UserInfoResponse = this.authService.signIn(this.formOld.value); 
+    this.showSuccessOld(currentUser.username);
     setTimeout(() => {
       this.router.navigate(['/welcome']);
    }, 5000);
-    //   e.preventDefault();
-  //   emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', e.target as HTMLFormElement, 'YOUR_PUBLIC_KEY')
-  //     .then((result: EmailJSResponseStatus) => {
-  //       this.showSuccess(this.form.get('name')!.value, this.form.get('email')!.value);
-  //     }, (error) => {
-  //       this.showError(this.form.get('name')!.value, error.text)
-  //     });
+   
   }
+
+  signIn(): void {
+    this.authService.signIn(this.formOld.value)
+      .subscribe(
+        response => {
+          // Traitez la réponse en fonction de vos besoins
+          console.log('Logged in successfully:', response);
+        },
+        error => {
+          // Gérez les erreurs
+          console.error('Login failed:', error);
+        }
+      );
 
 }

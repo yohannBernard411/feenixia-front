@@ -6,14 +6,13 @@
           <h4>Déja membre</h4>
             <form [formGroup]="formOld" (ngSubmit)="onSubmitOld($event)" class="formulaire text-font">
                 <label>
-                    Votre email:<br>
-                    <input type="email" formControlName="email" class="name-email-mdp">
+                    Votre nom utilisateur:<br>
+                    <input type="string" formControlName="username" class="name-email-mdp">
                 </label>
                   <br>
-                <div *ngIf="formOld.get('email')?.errors && formOld.get('email')!.errors!['required']">L'email nom est requis.</div>
-                <div *ngIf="formOld.get('email')?.errors && formOld.get('email')!.errors!['minlength']">L'email nom doit contenir au moins 6 caractères.</div>
-                <div *ngIf="formOld.get('email')?.errors && formOld.get('email')!.errors!['maxlength']">L'email doit contenir au maximum 100 caractères.</div>
-                <div *ngIf="formOld.get('email')?.errors && formOld.get('email')!.errors!['email']">L'email doit être de la forme: nom @ site . extension</div>
+                <div *ngIf="formOld.get('username')?.errors && formOld.get('username')!.errors!['required']">Le nom utilisateur est requis.</div>
+                <div *ngIf="formOld.get('username')?.errors && formOld.get('username')!.errors!['minlength']">Le nom utilisateur doit contenir au moins 6 caractères.</div>
+                <div *ngIf="formOld.get('username')?.errors && formOld.get('username')!.errors!['maxlength']">Le nom utilisateur doit contenir au maximum 100 caractères.</div>
                 <label>
                     Votre mot de passe:<br>
                     <input type="password" formControlName="mdp" class="name-email-mdp">
