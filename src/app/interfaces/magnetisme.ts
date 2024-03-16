@@ -1,6 +1,8 @@
-import { Care } from "./care";
-
-export interface Magnetisme extends Care {
+export interface Magnetisme{
+    id: number;
+    title: string;
+    content: string;
+    img: string;
     category: string;
-    price_cents: number;
+    price: number;
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-inscription',
@@ -10,7 +11,7 @@ import { NgToastService } from 'ng-angular-popup';
 })
 export class InscriptionComponent {
 
-  constructor(private toast: NgToastService, private router: Router){}
+  constructor(private toast: NgToastService, private router: Router, private authService: AuthService){}
 
   username: string = '';
   useremail: string = '';
@@ -26,17 +27,34 @@ export class InscriptionComponent {
   }
 
   formNew: FormGroup = new FormGroup({
-    name: new FormControl('', [Validators.minLength(6), Validators.maxLength(22), Validators.required]),
+    username: new FormControl('', [Validators.minLength(6), Validators.maxLength(22), Validators.required]),
     email: new FormControl('', [Validators.minLength(6), Validators.maxLength(100), Validators.required, Validators.email]),
-    mdp: new FormControl('', [Validators.minLength(6), Validators.maxLength(22), Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')])
-  });
+    password: new FormControl('', [Validators.minLength(6), Validators.maxLength(22), Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')])  
+});
+
+  isLoggedIn(){
+    return this.authService.isLoggedIn();
+  }
 
   onSubmitNew(e: Event) {
     const formData2 = this.formNew.value;
-    this.formNew.get('name')!.setValidators([Validators.minLength(6), Validators.maxLength(22), Validators.required]);
+    this.formNew.get('username')!.setValidators([Validators.minLength(6), Validators.maxLength(22), Validators.required]);
     this.formNew.get('email')!.setValidators([Validators.minLength(6), Validators.maxLength(100), Validators.required, Validators.email]);
-    this.formNew.get('mdp')!.setValidators([Validators.minLength(6), Validators.maxLength(22), Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]);
-    this.showSuccessNew(this.formNew.get('name')?.value, this.formNew.get('email')?.value);
+    this.formNew.get('password')!.setValidators([Validators.minLength(6), Validators.maxLength(22), Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]);
+    const currentUser = this.formNew.get('username')!.value;
+    console.log("data envoyés en post signin: "+JSON.stringify(this.formNew.value));
+    this.authService.signUp(this.formNew.value)
+    .subscribe(
+      response => {
+        // Traitez la réponse en fonction de vos besoins
+        console.log('Enregistrement is successfully:', response);
+      },
+      error => {
+        // Gérez les erreurs
+        console.error('SignUp failed:', error);
+      }
+    );
+    this.showSuccessNew(this.formNew.get('username')?.value, this.formNew.get('email')?.value);
     setTimeout(() => {
       this.router.navigate(['/welcome']);
    }, 5000);

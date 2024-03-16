@@ -1,6 +1,8 @@
-import { Care } from "./care";
-
-export interface Guidance extends Care {
+export interface Guidance{
+    id: number;
+    title: string;
+    content: string;
+    img: string;
     category: string;
-    price_cents: number;
+    price: number;
 }

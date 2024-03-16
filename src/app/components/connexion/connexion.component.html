@@ -15,17 +15,19 @@
                 <div *ngIf="formOld.get('username')?.errors && formOld.get('username')!.errors!['maxlength']">Le nom utilisateur doit contenir au maximum 100 caractères.</div>
                 <label>
                     Votre mot de passe:<br>
-                    <input type="password" formControlName="mdp" class="name-email-mdp">
+                    <input type="password" formControlName="password" class="name-email-mdp">
                 </label>
                 <br>
-                <div *ngIf="formOld.get('mdp')?.errors && formOld.get('mdp')!.errors!['required']">Le mot de passe est requis.</div>
-                <div *ngIf="formOld.get('mdp')?.errors && formOld.get('mdp')!.errors!['minlength']">Le mot de passe doit contenir au moins 6 caractères.</div>
-                <div *ngIf="formOld.get('mdp')?.errors && formOld.get('mdp')!.errors!['maxlength']">Le mot de passe doit contenir au maximum 22 caractères.</div>
-                <div *ngIf="formOld.get('mdp')?.errors && formOld.get('mdp')!.errors!['pattern']">Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un caractère spécial.</div>
+                <div *ngIf="formOld.get('password')?.errors && formOld.get('password')!.errors!['required']">Le mot de passe est requis.</div>
+                <div *ngIf="formOld.get('password')?.errors && formOld.get('password')!.errors!['minlength']">Le mot de passe doit contenir au moins 6 caractères.</div>
+                <div *ngIf="formOld.get('password')?.errors && formOld.get('password')!.errors!['maxlength']">Le mot de passe doit contenir au maximum 22 caractères.</div>
+                <div *ngIf="formOld.get('password')?.errors && formOld.get('password')!.errors!['pattern']">Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un caractère spécial.</div>
                 <a routerLink="/inscription">Pas encore inscrit</a>
-                <button *ngIf="formOld.get('email')?.errors || formOld.get('mdp')?.errors" class="cta invalid-cta" type="submit">Envoyer</button>
-                <button *ngIf="!formOld.get('email')?.errors && !formOld.get('mdp')?.errors" class="cta valid-cta" type="submit">Envoyer</button>
+                <button *ngIf="formOld.get('email')?.errors || formOld.get('password')?.errors" class="cta invalid-cta" type="submit">Envoyer</button>
+                <button *ngIf="!formOld.get('email')?.errors && !formOld.get('password')?.errors" class="cta valid-cta" type="submit">Envoyer</button>
+                
               </form>
+              <button *ngIf="this.isLoggedIn()" (click)="logout()" class="cta valid-cta">Se déconnecter</button>
         </div>
     </div>
 </div>

@@ -65,7 +65,7 @@ export class ShoppingService {
       this.addArticle(findElement.id);
     }else{
       const nb = this.nbArticles();
-      const newShoppingItem = this.createNew(nb+1, care.title, care.img, 1, care.price_cents);
+      const newShoppingItem = this.createNew(nb+1, care.title, care.img, 1, care.price);
       this.allItems.push(newShoppingItem);
     }
   }

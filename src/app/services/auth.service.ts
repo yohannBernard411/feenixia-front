@@ -7,11 +7,18 @@ import { UserInfoResponse } from '../interfaces/user-info-response'; // Assurez-
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = '/api/auth'; // L'URL de votre API Spring Boot
+  private apiUrl = 'http://localhost:8080/api/auth'; // L'URL de votre API Spring Boot
+  private loggedIn: boolean = false;
 
   constructor(private http: HttpClient) { }
 
+  // Méthode pour vérifier si l'utilisateur est connecté
+  isLoggedIn(): boolean {
+    return this.loggedIn;
+  }
+
   signIn(loginRequest: any): Observable<any> {
+    this.loggedIn = true;
     return this.http.post<any>(`${this.apiUrl}/signin`, loginRequest);
   }
 
@@ -20,6 +27,7 @@ export class AuthService {
   }
 
   signOut(): Observable<any> {
+    this.loggedIn = false;
     return this.http.post<any>(`${this.apiUrl}/signout`, null);
   }
 }

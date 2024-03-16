@@ -25,32 +25,44 @@ export class ConnexionComponent {
 
   formOld: FormGroup = new FormGroup({
     username: new FormControl('', [Validators.minLength(6), Validators.maxLength(100), Validators.required]),
-    mdp: new FormControl('', [Validators.minLength(6), Validators.maxLength(22), Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')])
+    password: new FormControl('', [Validators.minLength(6), Validators.maxLength(22), Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')])
   });
+
+  isLoggedIn(){
+    console.log("is logged in: "+this.authService.isLoggedIn());
+    return this.authService.isLoggedIn();
+  }
+
+  logout() {
+    this.authService.signOut();
+  }
 
   onSubmitOld(e: Event) {
     const formData2 = this.formOld.value;
     this.formOld.get('username')!.setValidators([Validators.minLength(6), Validators.maxLength(100), Validators.required]);
-    this.formOld.get('mdp')!.setValidators([Validators.minLength(6), Validators.maxLength(22), Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]);
-    const currentUser: UserInfoResponse = this.authService.signIn(this.formOld.value); 
-    this.showSuccessOld(currentUser.username);
+    this.formOld.get('password')!.setValidators([Validators.minLength(6), Validators.maxLength(22), Validators.required, Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]);
+    const currentUser = this.formOld.get('username')!.value;
+    console.log("data envoyés en post: "+JSON.stringify(this.formOld.value));
+    this.authService.signIn(this.formOld.value)
+    .subscribe(
+      response => {
+        // Traitez la réponse en fonction de vos besoins
+        console.log('Logged in successfully:', response);
+      },
+      error => {
+        // Gérez les erreurs
+        console.error('Login failed:', error);
+      }
+    );
+    // const currentUser: UserInfoResponse = this.authService.signIn(this.formOld.value); 
+    this.showSuccessOld(currentUser);
     setTimeout(() => {
       this.router.navigate(['/welcome']);
    }, 5000);
    
   }
 
-  signIn(): void {
-    this.authService.signIn(this.formOld.value)
-      .subscribe(
-        response => {
-          // Traitez la réponse en fonction de vos besoins
-          console.log('Logged in successfully:', response);
-        },
-        error => {
-          // Gérez les erreurs
-          console.error('Login failed:', error);
-        }
-      );
+   
+
 
 }

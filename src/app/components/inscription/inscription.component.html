@@ -7,12 +7,12 @@
           <form [formGroup]="formNew" (ngSubmit)="onSubmitNew($event)" class="formulaire text-font">
             <label>
               Votre nom:<br>
-              <input type="string" formControlName="name" class="name-email-mdp">
+              <input type="string" formControlName="username" class="name-email-mdp">
             </label>
             <br>
-            <div *ngIf="formNew.get('name')?.errors && formNew.get('name')!.errors!['required']">Le nom est requis.</div>
-            <div *ngIf="formNew.get('name')?.errors && formNew.get('name')!.errors!['minlength']">Le nom doit contenir au moins 6 caractères.</div>
-            <div *ngIf="formNew.get('name')?.errors && formNew.get('name')!.errors!['maxlength']">Le nom doit contenir au maximum 22 caractères.</div>
+            <div *ngIf="formNew.get('username')?.errors && formNew.get('username')!.errors!['required']">Le nom utilisateur est requis.</div>
+            <div *ngIf="formNew.get('username')?.errors && formNew.get('username')!.errors!['minlength']">Le nom utilisateur doit contenir au moins 6 caractères.</div>
+            <div *ngIf="formNew.get('username')?.errors && formNew.get('username')!.errors!['maxlength']">Le nom utilisateur doit contenir au maximum 22 caractères.</div>
             <label>
               Votre email:<br>
               <input type="email" formControlName="email" class="name-email-mdp">
@@ -24,17 +24,18 @@
             <div *ngIf="formNew.get('email')?.errors && formNew.get('email')!.errors!['email']">L'email doit être de la forme: nom @ site . extension</div>
             <label>
               Votre mot de passe:<br>
-              <input type="password" formControlName="mdp" class="name-email-mdp">
+              <input type="password" formControlName="password" class="name-email-mdp">
             </label>
             <br>
-            <div *ngIf="formNew.get('mdp')?.errors && formNew.get('mdp')!.errors!['required']">Le mot de passe est requis.</div>
-            <div *ngIf="formNew.get('mdp')?.errors && formNew.get('mdp')!.errors!['minlength']">Le mot de passe doit contenir au moins 6 caractères.</div>
-            <div *ngIf="formNew.get('mdp')?.errors && formNew.get('mdp')!.errors!['maxlength']">Le mot de passe doit contenir au maximum 22 caractères.</div>
-            <div *ngIf="formNew.get('mdp')?.errors && formNew.get('mdp')!.errors!['pattern']">Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un caractère spécial.</div>
+            <div *ngIf="formNew.get('password')?.errors && formNew.get('password')!.errors!['required']">Le mot de passe est requis.</div>
+            <div *ngIf="formNew.get('password')?.errors && formNew.get('password')!.errors!['minlength']">Le mot de passe doit contenir au moins 6 caractères.</div>
+            <div *ngIf="formNew.get('password')?.errors && formNew.get('password')!.errors!['maxlength']">Le mot de passe doit contenir au maximum 22 caractères.</div>
+            <div *ngIf="formNew.get('password')?.errors && formNew.get('password')!.errors!['pattern']">Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un caractère spécial.</div>
             <a routerLink="/connexion">Déja inscrit</a>
-            <button *ngIf="formNew.get('name')?.errors || formNew.get('email')?.errors || formNew.get('mdp')?.errors" class="cta invalid-cta" type="submit">Envoyer</button>
-            <button *ngIf="!formNew.get('name')?.errors && !formNew.get('email')?.errors && !formNew.get('mdp')?.errors" class="cta valid-cta" type="submit">Envoyer</button>
-            </form>
+            <button *ngIf="formNew.get('name')?.errors || formNew.get('email')?.errors || formNew.get('password')?.errors" class="cta invalid-cta" type="submit">Envoyer</button>
+            <button *ngIf="!formNew.get('name')?.errors && !formNew.get('email')?.errors && !formNew.get('password')?.errors" class="cta valid-cta" type="submit">Envoyer</button>
+            
+          </form>
       </div>
   </div>
 </div>

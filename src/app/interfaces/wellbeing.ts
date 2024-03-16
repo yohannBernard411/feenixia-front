@@ -1,6 +1,8 @@
-import { Care } from "./care";
-
-export interface Wellbeing extends Care {
+export interface Wellbeing{
+    id: number;
+    title: string;
+    content: string;
+    img: string;
     category: string;
-    price_cents: number;
+    price: number;
 }
