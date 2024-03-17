@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NgToastService } from 'ng-angular-popup';
+import { Wellbeing } from 'src/app/interfaces/wellbeing';
 import { DataService } from 'src/app/services/data.service';
 import { ShoppingService } from 'src/app/services/shopping.service';
 import { WellbeingService } from 'src/app/services/wellbeing.service';
@@ -20,13 +21,30 @@ export class WellbeingComponent {
     this.toast.error({detail:"ERROR",summary:'Oups, l\'article '+title+' n\'a pas pu être ajouté a votre panier',sticky:true, duration:5000});
   }
 
-  allWellbeings = this.wellbeingService.getAllWellbeings();
+  allWellbeings: Wellbeing[] = []; // Initialisation de la propriété
+
+  ngOnInit(): void {
+    this.wellbeingService.getAllWellbeing().subscribe(
+      (wellbeings: Wellbeing[]) => {
+        console.log("wellbeings dans wellbeing.ts: ", wellbeings);
+        this.allWellbeings = wellbeings;
+      },
+      error => {
+        console.log('Error:', error);
+      }
+    );
+  }
+
+  
+
+  // allMagnetismes: Magnetisme[] = this.magnetismeService.getAllMagnetisme();
   nbArticles: number = this.shoppingService.nbArticles();
 
   formatagePrix(prix: number): string { //accept 12350 and return 123,50€ 
     const taille = prix.toString().length;
     return prix.toString().substring(0, taille-2)+","+prix.toString().substring(taille-2, taille)+"€";
   }
+  
 
   shopping_add(id: number, title: string){
     this.shoppingService.addArticle(id);
