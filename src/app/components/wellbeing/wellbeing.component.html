@@ -9,7 +9,7 @@
                     <h2>{{wellbeing.title}}</h2>
                     <p>{{processString(wellbeing.content, wellbeing.id)}}
                     </p>
-                    <span>{{wellbeing.title}} : {{formatagePrix(wellbeing.price)}}</span><button (click)="shopping_add(wellbeing.id, wellbeing.title)" class="cta valid-cta">Ajouter au panier</button>
+                    <span>{{wellbeing.title}} : {{formatagePrix(wellbeing.price)}}</span><button (click)="shopping_add(this.wellbeing.id, this.wellbeing.title, this.wellbeing.category)" class="cta valid-cta">Ajouter au panier</button>
                 </div>
             </div>
         </div>

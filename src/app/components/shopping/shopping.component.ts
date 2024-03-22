@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Observable } from 'rxjs';
 import { Shopping } from 'src/app/interfaces/shopping';
+import { DataService } from 'src/app/services/data.service';
 import { ShoppingService } from 'src/app/services/shopping.service';
 
 const PLUS_ICON =
@@ -37,38 +39,72 @@ const MOINS_ICON = `<svg width="800px" height="800px" viewBox="0 -12 32 32" vers
   templateUrl: './shopping.component.html',
   styleUrls: ['./shopping.component.scss']
 })
-export class ShoppingComponent {
+export class ShoppingComponent implements OnInit {
 
-  constructor(private shoppingService: ShoppingService, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) { 
+  constructor(private shoppingService: ShoppingService, iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private dataService: DataService) { 
     iconRegistry.addSvgIconLiteral('plus', sanitizer.bypassSecurityTrustHtml(PLUS_ICON));
     iconRegistry.addSvgIconLiteral('moins', sanitizer.bypassSecurityTrustHtml(MOINS_ICON));
   }
 
-  currentShoppingByUser: Shopping[] = this.shoppingService.getAllShoppings();
+  allShoppings: Shopping[] = [];
+  nbShops: number = 0;
+  total: number = 0; 
 
+  ngOnInit(): void {
+    this.getAllShoppings();
+    this.nbArticles();
+    this.calculateTotal();
+  }
   
+  getAllShoppings(): void {
+    this.allShoppings = this.shoppingService.shoppings;
+  };
 
-    total: number = 100; 
+  nbArticles(): void{
+    let count = 0;
+    this.allShoppings.forEach(element => {
+        count += element.quantity;
+    });
+    this.nbShops = count;
+  }
 
-    calculateTotal(): number {
-      this.total = this.currentShoppingByUser.reduce((acc, article) => {
-        return acc + (article.quantity * article.price);
-      }, 0);
-      return this.total;
+
+  calculateTotal(): void {
+    this.total = 0;
+    this.allShoppings.forEach(element => {
+    this.total += (element.quantity * element.price)
+    });
+  }
+
+  formatagePrix(prix: number): string { //accept 12350 and return 123,50€ 
+    const taille = prix.toString().length;
+    return prix.toString().substring(0, taille-2)+","+prix.toString().substring(taille-2, taille)+"€";
+  }
+
+  quantity_remove(id: number, category: string){
+    let rank = 0;
+    for (let i=0; i<this.allShoppings.length; i++){
+      if (this.allShoppings[i].id==id && this.allShoppings[i].category==category){
+        rank = i;
+      }
     }
+    this.allShoppings[rank].quantity -= 1;
+    this.nbArticles();
+    this.calculateTotal();
+    this.dataService.updateData(this.nbShops);
+  }
 
-    formatagePrix(prix: number): string { //accept 12350 and return 123,50€ 
-      const taille = prix.toString().length;
-      return prix.toString().substring(0, taille-2)+","+prix.toString().substring(taille-2, taille)+"€";
+  quantity_add(id: number, category: string){
+    let rank = 0;
+    for (let i=0; i<this.allShoppings.length; i++){
+      if (this.allShoppings[i].id==id && this.allShoppings[i].category==category){
+        rank = i;
+      }
     }
-
-    quantity_remove(id: number){
-      this.shoppingService.removeArticle(id);
-    }
-
-    quantity_add(id: number){
-      this.shoppingService.addArticle(id);
-    }
-   
+    this.allShoppings[rank].quantity += 1;
+    this.nbArticles();
+    this.calculateTotal();
+    this.dataService.updateData(this.nbShops);
+  }
 
 }

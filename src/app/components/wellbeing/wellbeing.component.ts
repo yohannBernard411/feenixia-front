@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NgToastService } from 'ng-angular-popup';
+import { Shopping } from 'src/app/interfaces/shopping';
 import { Wellbeing } from 'src/app/interfaces/wellbeing';
 import { DataService } from 'src/app/services/data.service';
 import { ShoppingService } from 'src/app/services/shopping.service';
@@ -20,25 +21,31 @@ export class WellbeingComponent {
   showError(title: string) {
     this.toast.error({detail:"ERROR",summary:'Oups, l\'article '+title+' n\'a pas pu être ajouté a votre panier',sticky:true, duration:5000});
   }
-
   allWellbeings: Wellbeing[] = []; // Initialisation de la propriété
+  allShoppings: Shopping[] = [];
+  nbShops: number = 0;
 
   ngOnInit(): void {
-    this.wellbeingService.getAllWellbeing().subscribe(
-      (wellbeings: Wellbeing[]) => {
-        console.log("wellbeings dans wellbeing.ts: ", wellbeings);
-        this.allWellbeings = wellbeings;
-      },
-      error => {
-        console.log('Error:', error);
-      }
-    );
+    this.getAllWellbeings();
   }
 
-  
+ 
+  getAllWellbeings(): void {
+    this.allWellbeings = this.wellbeingService.wellbeings;
+  }
 
-  // allMagnetismes: Magnetisme[] = this.magnetismeService.getAllMagnetisme();
-  nbArticles: number = this.shoppingService.nbArticles();
+  getAllShoppings(): void {
+    this.allShoppings = this.shoppingService.shoppings;
+  };
+
+  nbArticles(): void{
+    let count = 0;
+    this.allShoppings.forEach(element => {
+        count += element.quantity;
+        console.log("count shop quantity += "+count);
+    });
+    this.nbShops = count;
+  }
 
   formatagePrix(prix: number): string { //accept 12350 and return 123,50€ 
     const taille = prix.toString().length;
@@ -46,8 +53,8 @@ export class WellbeingComponent {
   }
   
 
-  shopping_add(id: number, title: string){
-    this.shoppingService.addArticle(id);
+  shopping_add(id: number, title: string, category: string){
+    this.shoppingService.addArticle(id, category);
     this.showSuccess(title);
   }
 

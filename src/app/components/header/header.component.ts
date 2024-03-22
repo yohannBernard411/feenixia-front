@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ShoppingService } from 'src/app/services/shopping.service';
 import { Input } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -9,16 +10,19 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./header.component.scss']
 })
 
-export class HeaderComponent implements OnInit {
+export class HeaderComponent{
 
-  nbArticles: number = this.shoppingService.nbArticles();
+  nbArticles: any = "";
 
-  constructor(private dataService: DataService, private shoppingService: ShoppingService){}
+  constructor(private dataService: DataService, private shoppingService: ShoppingService){
+    this.initializeCounter();
+  }
 
-  ngOnInit() {
+  initializeCounter(){
     this.dataService.data$.subscribe(data => {
       this.nbArticles = data;
     });
   }
+
 
 }

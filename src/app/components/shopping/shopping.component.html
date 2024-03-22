@@ -15,13 +15,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let article of currentShoppingByUser">
+          <tr *ngFor="let article of allShoppings">
             <th scope="row"><img src={{article.img}}></th><!-- image-->
             <td>{{article.name}}</td><!-- designation-->
             <td class="quantity">
-              <mat-icon (click)="quantity_remove(article.id)" svgIcon="moins" aria-hidden="false" aria-label="svg icon"></mat-icon>
+              <mat-icon (click)="quantity_remove(article.id, article.category)" svgIcon="moins" aria-hidden="false" aria-label="svg icon"></mat-icon>
               {{article.quantity}}
-              <mat-icon (click)="quantity_add(article.id)" svgIcon="plus" aria-hidden="false" aria-label="svg icon"></mat-icon>
+              <mat-icon (click)="quantity_add(article.id, article.category)" svgIcon="plus" aria-hidden="false" aria-label="svg icon"></mat-icon>
             </td><!-- quantité-->
             <td>{{formatagePrix(article.price)}}</td><!-- prix unitaire-->
             <td>{{formatagePrix(article.quantity*article.price)}}</td><!-- totla-->
@@ -31,7 +31,7 @@
       <tfoot>
         <tr>
           <th scope="row" colspan="4">Total: </th>
-          <td>{{formatagePrix(calculateTotal())}}</td>
+          <td>{{formatagePrix(this.total)}}</td>
         </tr>
       </tfoot>
     </table>

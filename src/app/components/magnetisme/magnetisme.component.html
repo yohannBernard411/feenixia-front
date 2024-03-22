@@ -9,7 +9,7 @@
                     <h2>{{magnetisme.title}}</h2>
                     <p>{{processString(magnetisme.content, magnetisme.id)}}
                     </p>
-                    <span>{{magnetisme.title}} : {{formatagePrix(magnetisme.price)}}</span><button (click)="shopping_add(magnetisme.id, magnetisme.title)" class="cta valid-cta">Ajouter au panier</button>
+                    <span>{{magnetisme.title}} : {{formatagePrix(magnetisme.price)}}</span><button (click)="shopping_add(this.magnetisme.id, this.magnetisme.title, this.magnetisme.category)" class="cta valid-cta">Ajouter au panier</button>
                 </div>
             </div>
         </div>

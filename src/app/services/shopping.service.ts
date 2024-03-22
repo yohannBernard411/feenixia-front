@@ -1,54 +1,65 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Shopping } from '../interfaces/shopping';
-import { CareService } from './care.service';
 import { GuidanceService } from './guidance.service';
 import { DataService } from './data.service';
 import { MagnetismeService } from './magnetisme.service';
 import { WellbeingService } from './wellbeing.service';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ShoppingService {
+export class ShoppingService{
+
+  private apiUrl = 'http://localhost:8080/api/shopping';
+  private shoppingsSubject: BehaviorSubject<Shopping[]> = new BehaviorSubject<Shopping[]>([]);
+  shoppings$: Observable<Shopping[]> = this.shoppingsSubject.asObservable();
 
   constructor(private guidanceService: GuidanceService,
-              private dataService: DataService,
-              private magnetismeService: MagnetismeService,
-              private wellbeingService: WellbeingService
-              ){}
+    private dataService: DataService,
+    private magnetismeService: MagnetismeService,
+    private wellbeingService: WellbeingService,
+    private http: HttpClient) {
+    this.getAllShopping();
+    setTimeout(() =>this.nbArticles(), 1000);
+  }
 
+  shoppings: Shopping[] = [];
+  nbShops: number = 0;
 
-  shop1 : Shopping = {"id": 1, "name": "Guidance compléte","img": "https://i.ibb.co/3TbMNg0/cartesSM.webp","quantity": 1,"price": 5000};
-  shop2 : Shopping = {"id": 2, "name": "Guidance sur un sujet précis","img": "https://i.ibb.co/TL2L05C/bien-etre-SM.webp","quantity": 1,"price": 3000 };
-  shop3 : Shopping = {"id": 3, "name": "Guidance bien-être","img": "https://i.ibb.co/3TbMNg0/cartesSM.webp","quantity": 1,"price": 4000};
-  shop4 : Shopping = {"id": 4, "name": "Magnetisme energétique","img": "https://i.ibb.co/TL2L05C/bien-etre-SM.webp","quantity": 1,"price": 3000 };
+  private getAllShopping(): void {
+    this.http.get<Shopping[]>(this.apiUrl+'/all')
+      .pipe(
+        tap(shops => {
+          this.shoppingsSubject.next(shops);
+          this.shoppings = shops;
+        })
+      )
+      .subscribe();
+  }
 
-  allItems: Shopping[] = [this.shop1, this.shop2, this.shop3, this.shop4];
+  nbArticles(): void{
+      let count = 0;
+      this.shoppings$.subscribe(shoppings => {
+        this.shoppings = shoppings;
+      });
+      this.shoppings.forEach(element => {
+          count += element.quantity;
+      });
+      this.nbShops = count;
+      this.dataService.updateData(count);
+  }
 
-  createNew(id: number, name: string, img: string, quantity: number, price: number): Shopping {
+  createNew(id: number, name: string, img: string, quantity: number, category: string, price: number): Shopping {
     return {
         id: id,
         name: name,
         img: img,
         quantity: quantity,
+        category: category,
         price: price
     };
-  }
-
-  
-  getAllShoppings(): Shopping[]{
-    return this.allItems;
-  }
-
-  nbArticles(): number{
-    //return this.getAllShoppings().length;
-    const allShops = this.getAllShoppings();
-    let count = 0;
-    allShops.forEach(element => {
-      count += element.quantity;
-    })
-    return count;
-
   }
 
   createArticle(id: number){
@@ -59,30 +70,37 @@ export class ShoppingService {
     if (!care){
       care = this.wellbeingService.findById(id);
     }
-    const allShopping = this.getAllShoppings();
-    const findElement = allShopping.find(element => element.name == care.title);
+    const findElement = this.shoppings.find(element => element.name == care.title);
     if (findElement){
-      this.addArticle(findElement.id);
+      this.addArticle(findElement.id, findElement.category);
     }else{
-      const nb = this.nbArticles();
-      const newShoppingItem = this.createNew(nb+1, care.title, care.img, 1, care.price);
-      this.allItems.push(newShoppingItem);
+      const nb: number = this.nbShops;
+      const newShoppingItem = this.createNew(nb+1, care.title, care.img, 1, care.category, care.price);
+      this.shoppings.push(newShoppingItem);
     }
   }
 
-  addArticle(id: number){
-    const allShops: Shopping[] = this.getAllShoppings();
-    const findShop: Shopping = allShops.find(element => element.id==id)!;
-    findShop.quantity += 1;
-    this.dataService.updateData(this.nbArticles());
-    console.log("addarticle: "+this.nbArticles());
+  addArticle(id: number, category: string){
+    let findShop: Shopping;
+    this.shoppings.forEach(element => {
+      if (element.category==category && element.id==id){
+        findShop = element;
+      }
+    });
+    let rank = 0;
+    for (let i=0; i<this.shoppings.length; i++){
+      if (this.shoppings[i].id==id && this.shoppings[i].category==category){
+        rank = i;
+      }
+    }
+    this.shoppings[rank].quantity += 1;
+    this.nbArticles();
+    this.dataService.updateData(this.nbShops);
   }
 
   removeArticle(id: number){
-    const allShops: Shopping[] = this.getAllShoppings();
-    const findShop: Shopping = allShops.find(element => element.id==id)!;
+    const findShop: Shopping = this.shoppings.find(element => element.id==id)!;
     findShop.quantity -= 1;
-    this.dataService.updateData(this.nbArticles());
-    console.log("removearticle: "+this.nbArticles());
+    this.dataService.updateData(this.nbShops);
   }
 }

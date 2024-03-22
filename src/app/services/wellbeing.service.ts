@@ -1,16 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Wellbeing } from '../interfaces/wellbeing';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WellbeingService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.getAllWellbeings();
+  }
 
   private apiUrl = 'http://localhost:8080/api/wellbeing';
+  private wellbeingsSubject: BehaviorSubject<Wellbeing[]> = new BehaviorSubject<Wellbeing[]>([]);
+  wellbeings$: Observable<Wellbeing[]> = this.wellbeingsSubject.asObservable();
+  wellbeings: Wellbeing[] = [];
 
   
   createNewWellbeing(id: number, title: string, content: string, img: string, category: string, price: number): Wellbeing {
@@ -24,8 +29,15 @@ export class WellbeingService {
     };
   }
 
-  getAllWellbeing(): Observable<Wellbeing[]> {
-    return this.http.get<Wellbeing[]>(`${this.apiUrl}/all`);
+  private getAllWellbeings(): void {
+    this.http.get<Wellbeing[]>(this.apiUrl+'/all')
+      .pipe(
+        tap(wellbeings => {
+          this.wellbeingsSubject.next(wellbeings);
+          this.wellbeings = wellbeings;
+        })
+      )
+      .subscribe();
   }
 
   getWellbeingById(wellbeingId: number): Observable<Wellbeing> {

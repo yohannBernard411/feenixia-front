@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Guidance } from '../interfaces/guidance';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -8,9 +8,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class GuidanceService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    this.getAllGuidance()
+  }
 
   private apiUrl = 'http://localhost:8080/api/guidance';
+  guidances: Guidance[] = [];
+  private guidancesSubject: BehaviorSubject<Guidance[]> = new BehaviorSubject<Guidance[]>([]);
+  shoppings$: Observable<Guidance[]> = this.guidancesSubject.asObservable();
 
   
   createNewGuidance(id: number, title: string, content: string, img: string, category: string, price: number): Guidance {
@@ -24,8 +29,18 @@ export class GuidanceService {
     };
   }
 
-  getAllGuidance(): Observable<Guidance[]> {
-    return this.http.get<Guidance[]>(`${this.apiUrl}/all`);
+  // getAllGuidance(): Observable<Guidance[]> {
+  //   return this.http.get<Guidance[]>(`${this.apiUrl}/all`);
+  // }
+  getAllGuidance(): void{
+    this.http.get<Guidance[]>(this.apiUrl+'/all')
+      .pipe(
+        tap(guidances => {
+          this.guidancesSubject.next(guidances);
+          this.guidances = guidances;
+        })
+      )
+      .subscribe();
   }
 
   getGuidanceById(guidanceId: number): Observable<Guidance> {

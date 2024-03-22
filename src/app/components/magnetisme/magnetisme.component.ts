@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NgToastService } from 'ng-angular-popup';
 import { Magnetisme } from 'src/app/interfaces/magnetisme';
+import { Shopping } from 'src/app/interfaces/shopping';
 import { DataService } from 'src/app/services/data.service';
 import { MagnetismeService } from 'src/app/services/magnetisme.service';
 import { ShoppingService } from 'src/app/services/shopping.service';
@@ -12,7 +13,7 @@ import { ShoppingService } from 'src/app/services/shopping.service';
   styleUrls: ['./magnetisme.component.scss']
 })
 export class MagnetismeComponent {
-  constructor(private dataService: DataService, private magnetismeService: MagnetismeService, private toast: NgToastService, private sanitizer: DomSanitizer, private shoppingService: ShoppingService){}
+  constructor(private dataService: DataService, private magnetismeService: MagnetismeService, private toast: NgToastService, private sanitizer: DomSanitizer, private shoppingService: ShoppingService){};
 
   showSuccess(title: string) {
     this.toast.success({detail:"SUCCESS",summary:'Merci, l\'article ['+title+'] à bien été ajouté a votre panier.',duration:5000});
@@ -22,23 +23,30 @@ export class MagnetismeComponent {
   }
 
   allMagnetismes: Magnetisme[] = []; // Initialisation de la propriété
+  allShoppings: Shopping[] = [];
+  nbShops: number = 0;
 
   ngOnInit(): void {
-    this.magnetismeService.getAllMagnetisme().subscribe(
-      (magnetismes: Magnetisme[]) => {
-        console.log("magnetismes dans magnetisme.ts: ", magnetismes);
-        this.allMagnetismes = magnetismes;
-      },
-      error => {
-        console.log('Error:', error);
-      }
-    );
+    this.getAllMagnetismes();
   }
 
-  
+ 
+  getAllMagnetismes(): void {
+    this.allMagnetismes = this.magnetismeService.magnetismes;
+  }
 
-  // allMagnetismes: Magnetisme[] = this.magnetismeService.getAllMagnetisme();
-  nbArticles: number = this.shoppingService.nbArticles();
+  getAllShoppings(): void {
+    this.allShoppings = this.shoppingService.shoppings;
+  };
+
+  nbArticles(): void{
+    let count = 0;
+    this.allShoppings.forEach(element => {
+        count += element.quantity;
+        console.log("count shop quantity += "+count);
+    });
+    this.nbShops = count;
+  }
 
   formatagePrix(prix: number): string { //accept 12350 and return 123,50€ 
     const taille = prix.toString().length;
@@ -46,8 +54,8 @@ export class MagnetismeComponent {
   }
   
 
-  shopping_add(id: number, title: string){
-    this.shoppingService.addArticle(id);
+  shopping_add(id: number, title: string, category: string){
+    this.shoppingService.addArticle(id, category);
     this.showSuccess(title);
   }
 

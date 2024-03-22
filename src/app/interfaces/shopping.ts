@@ -3,5 +3,6 @@ export interface Shopping{
     name: string;
     img: string;
     quantity: number;
+    category: string;
     price: number;
 }

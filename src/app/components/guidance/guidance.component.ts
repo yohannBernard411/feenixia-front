@@ -6,6 +6,7 @@ import { ShoppingService } from 'src/app/services/shopping.service';
 import { DataService } from 'src/app/services/data.service';
 import { Guidance } from 'src/app/interfaces/guidance';
 import { Subscription } from 'rxjs';
+import { Shopping } from 'src/app/interfaces/shopping';
 
 
 @Component({
@@ -17,8 +18,6 @@ export class GuidanceComponent implements OnInit {
 
   constructor(private dataService: DataService, private guidanceService: GuidanceService, private toast: NgToastService, private sanitizer: DomSanitizer, private shoppingService: ShoppingService){}
 
-
-
   showSuccess(title: string) {
     this.toast.success({detail:"SUCCESS",summary:'Merci, l\'article ['+title+'] à bien été ajouté a votre panier.',duration:5000});
   }
@@ -27,23 +26,43 @@ export class GuidanceComponent implements OnInit {
   }
 
   allGuidances: Guidance[] = []; // Initialisation de la propriété
+  allShoppings: Shopping[] = [];
+  nbShops: number = 0;
 
   ngOnInit(): void {
-    this.guidanceService.getAllGuidance().subscribe(
-      (guidances: Guidance[]) => {
-        console.log("guidances dans guidance.ts: ", guidances);
-        this.allGuidances = guidances;
-      },
-      error => {
-        console.log('Error:', error);
-      }
-    );
+    this.getAllGuidances();
+  }
+
+  getAllGuidances(): void{
+    this.allGuidances = this.guidanceService.guidances;
+    // this.guidanceService.getAllGuidance().subscribe(
+    //   (guidances: Guidance[]) => {
+    //     console.log("guidances dans guidance.ts: ", guidances);
+    //     this.allGuidances = guidances;
+    //   },
+    //   error => {
+    //     console.log('Error:', error);
+    //   }
+    // );
+  }
+
+  getAllShoppings(): void {
+    this.allShoppings = this.shoppingService.shoppings;
+  };
+
+  nbArticles(): void{
+    let count = 0;
+    this.allShoppings.forEach(element => {
+        count += element.quantity;
+        console.log("count shop quantity += "+count);
+    });
+    this.nbShops = count;
   }
 
   
 
   // allGuidances: Guidance[] = this.guidanceService.getAllGuidance();
-  nbArticles: number = this.shoppingService.nbArticles();
+  //nbArticles: number = this.shoppingService.nbArticles();
 
   formatagePrix(prix: number): string { //accept 12350 and return 123,50€ 
     const taille = prix.toString().length;
@@ -51,8 +70,8 @@ export class GuidanceComponent implements OnInit {
   }
   
 
-  shopping_add(id: number, title: string){
-    this.shoppingService.addArticle(id);
+  shopping_add(id: number, title: string, category: string){
+    this.shoppingService.addArticle(id, category);
     this.showSuccess(title);
   }
 

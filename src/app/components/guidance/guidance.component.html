@@ -9,7 +9,7 @@
                     <h2>{{guidance.title}}</h2>
                     <p id={{guidance.id}}>{{processString(guidance.content, guidance.id)}}
                     </p>
-                    <span>{{guidance.title}} : {{formatagePrix(guidance.price)}}</span><button (click)="shopping_add(guidance.id, guidance.title)" class="cta valid-cta">Ajouter au panier</button>
+                    <span>{{guidance.title}} : {{formatagePrix(guidance.price)}}</span><button (click)="shopping_add(this.guidance.id, this.guidance.title, this.guidance.category)" class="cta valid-cta">Ajouter au panier</button>
                 </div>
             </div>
         </div>

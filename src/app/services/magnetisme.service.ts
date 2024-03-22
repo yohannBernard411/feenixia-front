@@ -1,16 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Magnetisme } from '../interfaces/magnetisme';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MagnetismeService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.getAllMagnetisme();
+  }
 
   private apiUrl = 'http://localhost:8080/api/magnetisme';
+  private magnetismesSubject: BehaviorSubject<Magnetisme[]> = new BehaviorSubject<Magnetisme[]>([]);
+  magnetismes$: Observable<Magnetisme[]> = this.magnetismesSubject.asObservable();
+  magnetismes: Magnetisme[] = [];
 
   
   createNewMagnetisme(id: number, title: string, content: string, img: string, category: string, price: number): Magnetisme {
@@ -24,8 +29,15 @@ export class MagnetismeService {
     };
   }
 
-  getAllMagnetisme(): Observable<Magnetisme[]> {
-    return this.http.get<Magnetisme[]>(`${this.apiUrl}/all`);
+  private getAllMagnetisme(): void {
+    this.http.get<Magnetisme[]>(this.apiUrl+'/all')
+      .pipe(
+        tap(magnetismes => {
+          this.magnetismesSubject.next(magnetismes);
+          this.magnetismes = magnetismes;
+        })
+      )
+      .subscribe();
   }
 
   getMagnetismeById(magnetismeId: number): Observable<Magnetisme> {
