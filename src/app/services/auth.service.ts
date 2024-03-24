@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
-import {CookieService} from 'ngx-cookie-service';
 import { UserInfoResponse } from '../interfaces/user-info-response'; // Assurez-vous d'importer le modèle UserInfoResponse ou de le créer
 
 @Injectable({
@@ -12,7 +11,7 @@ export class AuthService {
   private loggedIn: boolean = false;
   cookie_name: string = "tototte";
 
-  constructor(private http: HttpClient, private cookieService:CookieService) { }
+  constructor(private http: HttpClient) { }
 
   // Méthode pour vérifier si l'utilisateur est connecté
   isLoggedIn(): boolean {
@@ -22,8 +21,8 @@ export class AuthService {
   signIn(loginRequest: any): Observable<any> { //connexion
     return this.http.post<any>(`${this.apiUrl}/signin`, loginRequest).pipe(
       tap(response => {
-        this.cookie_name=this.cookieService.get('tototte');
-        console.log("tototte: "+this.cookie_name);
+        //this.cookie_name=this.cookieService.get('tototte');
+        //console.log("tototte: "+this.cookie_name);
         // Stocker le jeton JWT dans le localStorage après une connexion réussie
         localStorage.setItem('jwtToken', response.accessToken);
         console.log("localStorage: "+JSON.stringify(response));

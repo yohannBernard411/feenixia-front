@@ -26,7 +26,6 @@ import { InscriptionComponent } from './components/inscription/inscription.compo
 import { MediumComponent } from './components/medium/medium.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './services/auth-interceptor.service';
-import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -63,8 +62,7 @@ import { CookieService } from 'ngx-cookie-service';
     FooterComponent,
 ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    CookieService
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
