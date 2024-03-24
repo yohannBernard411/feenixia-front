@@ -1,11 +1,10 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Shopping } from '../interfaces/shopping';
-import { GuidanceService } from './guidance.service';
+import { MediumService } from './medium.service';
 import { DataService } from './data.service';
-import { MagnetismeService } from './magnetisme.service';
-import { WellbeingService } from './wellbeing.service';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Medium } from '../interfaces/medium';
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +15,8 @@ export class ShoppingService{
   private shoppingsSubject: BehaviorSubject<Shopping[]> = new BehaviorSubject<Shopping[]>([]);
   shoppings$: Observable<Shopping[]> = this.shoppingsSubject.asObservable();
 
-  constructor(private guidanceService: GuidanceService,
+  constructor(private mediumService: MediumService,
     private dataService: DataService,
-    private magnetismeService: MagnetismeService,
-    private wellbeingService: WellbeingService,
     private http: HttpClient) {
     this.getAllShopping();
     setTimeout(() =>this.nbArticles(), 1000);
@@ -62,40 +59,45 @@ export class ShoppingService{
     };
   }
 
-  createArticle(id: number){
-    let care = this.guidanceService.findById(id);
-    if (!care){
-      care = this.magnetismeService.findById(id);
-    }
-    if (!care){
-      care = this.wellbeingService.findById(id);
-    }
-    const findElement = this.shoppings.find(element => element.name == care.title);
-    if (findElement){
-      this.addArticle(findElement.id, findElement.category);
-    }else{
-      const nb: number = this.nbShops;
-      const newShoppingItem = this.createNew(nb+1, care.title, care.img, 1, care.category, care.price);
-      this.shoppings.push(newShoppingItem);
-    }
-  }
+  // createArticle(id: number){
+  //   let care = this.mediumService.findById(id);
+  //   const findElement = this.shoppings.find(element => element.name == care.title);
+  //   if (findElement){
+  //     this.addArticle(findElement.id, findElement.category);
+  //   }else{
+  //     const nb: number = this.nbShops;
+  //     const newShoppingItem = this.createNew(nb+1, care.title, care.img, 1, care.category, care.price);
+  //     this.shoppings.push(newShoppingItem);
+  //   }
+  // }
 
-  addArticle(id: number, category: string){
+  addArticle(id: number){
     let findShop: Shopping;
-    this.shoppings.forEach(element => {
-      if (element.category==category && element.id==id){
+    let rank = -1;
+    this.shoppings.forEach((element, index) => {
+      if (element.id==id){
+        rank = index;
         findShop = element;
       }
     });
-    let rank = 0;
-    for (let i=0; i<this.shoppings.length; i++){
-      if (this.shoppings[i].id==id && this.shoppings[i].category==category){
-        rank = i;
-      }
-    }
-    this.shoppings[rank].quantity += 1;
+    if (rank  != -1){
+      this.shoppings[rank].quantity += 1;
     this.nbArticles();
     this.dataService.updateData(this.nbShops);
+    }else{
+
+
+    this.mediumService.getMediumById(id).subscribe((medium: Medium) => {
+      const title: string = medium.title;
+      const img: string = medium.img;
+      const category: string = medium.category;
+      const price: number = medium.price;
+    const newShop = this.createNew(this.shoppings.length, title, img, 1, category, price);
+    this.shoppings.push(newShop);
+    this.nbArticles();
+    });
+  }
+    
   }
 
   removeArticle(id: number){

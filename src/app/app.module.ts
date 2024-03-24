@@ -23,10 +23,10 @@ import { ShoppingComponent } from './components/shopping/shopping.component';
 import { SearchComponent } from './components/search/search.component';
 import { LegalnoticeComponent } from './components/legalnotice/legalnotice.component';
 import { InscriptionComponent } from './components/inscription/inscription.component';
-import { GuidanceComponent } from './components/guidance/guidance.component';
-import { MagnetismeComponent } from './components/magnetisme/magnetisme.component';
-import { WellbeingComponent } from './components/wellbeing/wellbeing.component';
-import { HttpClientModule } from '@angular/common/http';
+import { MediumComponent } from './components/medium/medium.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from './services/auth-interceptor.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -45,9 +45,7 @@ import { HttpClientModule } from '@angular/common/http';
     SearchComponent,
     LegalnoticeComponent,
     InscriptionComponent,
-    GuidanceComponent,
-    MagnetismeComponent,
-    WellbeingComponent
+    MediumComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +62,10 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
 ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

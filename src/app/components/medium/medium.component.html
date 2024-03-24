@@ -1,0 +1,19 @@
+<div class="fullpage">
+    <app-header></app-header>
+    <h2 class="subtitle title-font">Les mediums</h2>
+    <div class="all-medium">
+        <div  *ngFor="let medium of this.allMediums">
+            <div class="medium white-background">
+                <img src={{medium.img}}>
+                <div class="description lotus-parent">
+                    <h2>{{medium.title}}</h2>
+                    <p id={{medium.id}}>{{processString(medium.content, medium.id)}}
+                    </p>
+                    <span>{{medium.title}} : {{formatagePrix(medium.price)}}</span><button (click)="shopping_add(this.medium.id, this.medium.title, this.medium.category)" class="cta valid-cta">Ajouter au panier</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-toast></ng-toast>

@@ -1,4 +1,4 @@
-export interface Wellbeing{
+export interface Medium{
     id: number;
     title: string;
     content: string;
